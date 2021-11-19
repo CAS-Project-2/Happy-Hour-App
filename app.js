@@ -4,9 +4,11 @@ var createError = require('http-errors');
 var express = require('express');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var usersRouter = require('./routes/users.routes');
 
 var app = express();
+
+require("./config/db")
 
 // Functional curling style of loading configuration
 require('./config/db')

@@ -13,11 +13,12 @@ const userSchema = new Schema({
 	},
 	email: {
 		type: String,
-		required: true
+		required: true,
+		unique: true
 	},
-	// favorites: [{ type: Schema.Types.ObjectId, ref: 'Room', default: [] }]
+	favorites: [{ type: Schema.Types.ObjectId, ref: 'Cocktail', default: [] }]
 });
 
-const User = model('User', userSchema);
+module.exports = model('User', userSchema);
 
-module.exports = User;
+
