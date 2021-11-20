@@ -18,10 +18,4 @@ router.get('/api', (req, res)=> {
 );
 });
 
-/* GET login page */
-router.get('/login', (req, res)=> {
-  User.getAll().then((users)=>
-  res.render('login-form', { title: 'Log In', users})
-  )});
-
 module.exports = router;
