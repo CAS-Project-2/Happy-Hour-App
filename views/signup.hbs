@@ -1,13 +1,15 @@
-<form action="/user/signup" method="post">
+<form action="/users/signup" method="post">
 
-
+<label for="email"></label>
 <input type="text" name="email" unique="true" required="true" placeholder="Email"/>
 
+<label for="username"></label>
 <input type="text" name="username" unique="true" required="true" placeholder="Username"/>
 
-
+<label for="password"></label>
 <input type="password" name="password" required="true" placeholder="Password"/>
 
+<label for="favcocktail"></label>
 <input required type="favcocktail" name="favcocktail" placeholder="Your favourite cocktail"/>
 
 <button type="submit">Signup</button>

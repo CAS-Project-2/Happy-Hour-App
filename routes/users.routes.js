@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+const bcrypt = require("bcrypt")
+
 // to get user model
 const User = require("../models/User.model")
 
@@ -10,35 +12,28 @@ router.get('/', function(req, res, next) {
 
 // routes for signup or register
 router.route('/signup')
-
-.get((req, res, next) => {
-  res.render('signup')
+.get((req, res) => {
+  res.render('signup');
 })
+.post( async (req, res)=>{
+const {username, email, password, favcocktail} = req.body
+  if(!username || !email || !password){
+    res.render("signup", { username, email, error:{type: "CRED_ERR", msg: "Missing credentials"}})
+  }
 
-.post((req, res)=>{
-  const {username,email,password} = req.body
-  if(!username || !email || !password) res.render("signup",{errorMessage:"Invalid username or password or email"})
-  User.findOne({username})
+  const user = await User.findOne({email})
+  if(user){
+    res.render("signup", { username, email, error:{type: "USR_ERR", msg: "Email exists"}})
+  }
 
-  .then((user)=>{
-    //to check if user already exists
+  const salt = bcrypt.genSaltSync(5)
+  const hashPwd = bcrypt.hashSync(password, salt)
 
-    if(user)res.render("signup",{errorMessage:"user exists, try to log in"})
-    const salt = bcrypt.saltSync(saltRound)
-    const hashPassword = bcrypt.hashSync(password, salt)
+  await User.create({username, email, password: hashPwd, favcocktail})
+  res.render("welcome-page")
 
-    //to crate the users if everything is find
 
-    User.create({username,password:hashPassword})
-    .then((req, res)=>{
-      res.render("index")
-    })
-    .catch((error)=>{
-      res.render("signup", {errorMessage:"Sorry for the inconvenience. Try again later."})
-    })
-  })
 })
-
 //login page now!!
 router.route("/login")
 
@@ -46,23 +41,25 @@ router.route("/login")
   res.render("login")
 })
 
-.post((req, res)=>{
-  // thinking to giv more options to user. user can use mail or username to login const usernameOrMail = username || email
+.post( async (req, res)=>{
   const {username, password} = req.body
-  if(!username || !password) res.render("login", {errorMessage: "Username or password are required"})
-  User.findOne({username})
-  .then((user)=>{
-    if(username) res.render("login", {errorMessage:"User does not exist"})
-     // to check if the first pwd is matching the one encrypted from db
-    const passwordCorrect = bcrypt.compareSync(password, user.password) 
-    if(passwordCorrect)res.render("/index")
-    else res.render("login", {errorMessage:"password is Wrong"})
-  })
-  .catch((error)=>{
-    res.render("login", {errorMessage:"Sorry for the inconvenience. Try again later."})
-  })
+  if(!username || !password){res.render("login", {error:{type: "CRED_ERR", msg: "Missing credentials"}})}
+
+  const loggedInUser = await User.findOne({username})
+  if(!loggedInUser) {res.render("login", {error:{type: "USR_ERR", msg: "User does not exist"}})}
+  
+  const pwsIsCorrect = bcrypt.compareSync(password, loggedInUser.password)
+
+  if(pwsIsCorrect){
+    req.session.loggedInUser = loggedInUser
+    res.render("welcome-page")
+  }else{
+    res.render(res.render("login", {error:{type: "PWD_ERR", msg: "Password incorrect"}}))
+  }
     
 })
+
+
 
 
 
