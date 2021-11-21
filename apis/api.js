@@ -2,6 +2,7 @@ const axios = require("axios");
 class Api {
   constructor(baseURL, id) { //baseUrl could be overwritten in the route that uses the API
     this.baseURL = baseURL || process.env.API_URL,
+    
 
     this.api = axios.create(
       {
@@ -10,11 +11,14 @@ class Api {
     )
   }
   // CHANGE THE PATHS ACCORIDNG TO API DOCUEMNTATION
-  getAll = () => this.api.get(`/search.php?f=a`)
+  getByLetter = (letter) => this.api.get(`/search.php?f=${letter}`)
   getRandom = ()=> this.api.get(`/random.php`)
   getById = (id)=> this.api.get(`/lookup.php?i=${id}`)
+  getGlassList =()=>this.api.get(`/list.php?g=list`)
+  filterByGlass = (glass)=> this.api.get(`/filter.php?g=${glass}`)
+  getByNonAlcoholic =()=>this.api.get(`/filter.php?a=Non_Alcoholic`)
 
- // getOne = (id)=> this.api.get(`/${id}`)
+
   //createOne = (newEntityValues)=>this.api.post("/", newEntityValues)
   //deleteOne = (id)=> this.api.delete(`/${id}`)
   //updateOne = (id)=> this.api.put(`/${id}`)
