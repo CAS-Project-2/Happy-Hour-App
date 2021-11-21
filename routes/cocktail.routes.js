@@ -11,16 +11,22 @@ const { response } = require('../app');
 //filter by ingredient
 router.get("/liquor", (req, res)=>{res.render("cocktails/liquor")})
 
+//filter by liquor - NOT WORKING
 router.get("/liquor/:alcohol", (req, res)=>{
   const {alcohol} = req.params
+  console.log("hello")
   cocktailAPI.getByLiquor(alcohol)
-  .then(apiResponse=>res.render("cocktails/filtered-liquor", {cocktails: apiResponse.data.drinks,alcohol}))
+  .then(apiResponse=>{
+    console.log(apiResponse.data.drinks)
+    res.render("cocktails/filtered-liquor", {cocktails: apiResponse.data.drinks, alcohol})})
   .catch(console.log)
 })
 
 router.get("/", (req, res)=>{
     cocktailAPI.getAll()
-    .then(apiResponse=>res.render("cocktails/cocktail-list", {cocktails: apiResponse.data.drinks}))
+  .then(apiResponse=>
+    
+    res.render("cocktails/cocktail-list", {cocktails: apiResponse.data.drinks}))
     .catch(console.log)
   })
 
