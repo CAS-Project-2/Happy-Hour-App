@@ -8,6 +8,12 @@ const router = express.Router();
 const cocktailAPI = require("../apis/api");
 const { response } = require('../app');
 
+//filter by ingredient
+router.get("/ingredient", (req, res)=>{
+  cocktailAPI.getByIngredient()
+  .then(()=>res.render("cocktails/ingredient"))
+  .catch(console.log)
+})
 
 router.get("/", (req, res)=>{
     cocktailAPI.getAll()
@@ -19,7 +25,6 @@ router.get("/", (req, res)=>{
     cocktailAPI.getRandom()
     .then(apiResponse=>{
       res.render("cocktails/random-cocktail", {cocktail: apiResponse.data.drinks[0]})
-
     })
     .catch(console.log)
   })
@@ -30,9 +35,7 @@ router.get("/", (req, res)=>{
     cocktailAPI.getById(id)
     .then(apiResponse=>{
       console.log(apiResponse.data.drinks[0])
-      
       res.render("cocktails/cocktail-details", {cocktail: apiResponse.data.drinks[0]})
-
     })
     .catch(console.log)
   })

@@ -13,6 +13,7 @@ class Api {
   getAll = () => this.api.get(`/search.php?f=a`)
   getRandom = ()=> this.api.get(`/random.php`)
   getById = (id)=> this.api.get(`/lookup.php?i=${id}`)
+  getByIngredient = (ingredient)=> this.api.get(`/filter.php?i=${ingredient}`)
 
  // getOne = (id)=> this.api.get(`/${id}`)
   //createOne = (newEntityValues)=>this.api.post("/", newEntityValues)
