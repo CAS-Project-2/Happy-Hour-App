@@ -29,11 +29,24 @@ router.get("/alphabet/:letter", (req, res)=>{
 
 })
 
-// FILTER BY GLASS
+// GLASS FILTER LIST
 router.get("/glasses", (req,res)=>{
   cocktailAPI.getGlassList()
   .then(apiResponse=>{
     res.render("cocktails/glass-list", {glasses: apiResponse.data.drinks})
+  })
+  .catch(console.log)
+})
+
+//GLASS FILTERED !!NOT WORKING!!
+
+router.get("/glasses/:glass", (req,res)=>{
+  const {glass} = req.params
+
+  cocktailAPI.filterByGlass(glass)
+  .then(apiResponse=>{
+    console.log(glass)
+    res.render("cocktails/cocktailsByGlass", {glasses: apiResponse.data.drinks, glass})
   })
   .catch(console.log)
 })
@@ -50,7 +63,7 @@ router.get("/non-alcoholic", (req,res)=>{
   router.get("/random", (req, res)=>{
     cocktailAPI.getRandom()
     .then(apiResponse=>{
-      res.render("cocktails/random-cocktail", {cocktail: apiResponse.data.drinks[0]})
+      res.render("cocktails/cocktail-details", {cocktail: apiResponse.data.drinks[0]})
 
     })
     .catch(console.log)
@@ -61,11 +74,8 @@ router.get("/non-alcoholic", (req,res)=>{
     const {id} = req.params
 
     cocktailAPI.getById(id)
-    .then(apiResponse=>{
-      console.log(apiResponse.data.drinks[0])
-      
+    .then(apiResponse=>{      
       res.render("cocktails/cocktail-details", {cocktail: apiResponse.data.drinks[0]})
-
     })
     .catch(console.log)
   })
