@@ -26,11 +26,23 @@ router.get("/liquor/:alcohol", (req, res)=>{
 
 //ROUTE TO RUMS LIST
 
-router.get("/rums", (req, res)=>{res.render("cocktails/liquor/rums-list")})
+router.get("/rums-list", (req, res)=>{res.render("cocktails/liquor")})
 
 //ROUTE TO FRUITY-LIQUORS LIST
 
-router.get("/fruity", (req, res)=>{res.render("cocktails/liquor/fruity-list")})
+router.get("/fruity", (req, res)=>{res.render("cocktails/liquor")})
+
+//FILTER BY FRUITY-LIQUORS
+
+router.get("/liquor/:alcohol", (req, res)=>{
+  const {alcohol} = req.params
+  console.log("hello")
+  cocktailAPI.getByLiquor(alcohol)
+  .then(apiResponse=>{
+    console.log(apiResponse.data.drinks)
+    res.render("cocktails/fruity-list", {cocktails: apiResponse.data.drinks,alcohol})})
+  .catch(console.log)
+})
 
 //ROUTE TO COFFEE-LIQUORS LIST
 
