@@ -1,0 +1,15 @@
+<form action="/users/login" method="post">
+
+
+<input type="text" name="username" unique="true" required="true" placeholder="Username "/>
+
+<input type="password" name="password" required="true" placeholder="Password"/>
+
+<button type="submit">Login</button>
+<a href="/users/signup">Don't have an account? Sign up here</a>
+
+</form>
+
+{{#if errorMessage}}
+<p>{{errorMessage}}</p>
+{{/if}}
