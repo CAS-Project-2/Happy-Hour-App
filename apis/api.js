@@ -15,7 +15,7 @@ class Api {
   getById = (id)=> this.api.get(`/lookup.php?i=${id}`)
   getByLiquor = (liquor)=> this.api.get(`/filter.php?i=${liquor}`)
 
- // getOne = (id)=> this.api.get(`/${id}`)
+  //getOne = (id)=> this.api.get(`/${id}`)
   //createOne = (newEntityValues)=>this.api.post("/", newEntityValues)
   //deleteOne = (id)=> this.api.delete(`/${id}`)
   //updateOne = (id)=> this.api.put(`/${id}`)
