@@ -9,9 +9,12 @@ const cocktailAPI = require("../apis/api");
 const { response } = require('../app');
 
 //filter by ingredient
-router.get("/ingredient", (req, res)=>{
-  cocktailAPI.getByIngredient()
-  .then(()=>res.render("cocktails/ingredient"))
+router.get("/liquor", (req, res)=>{res.render("cocktails/liquor")})
+
+router.get("/liquor/:alcohol", (req, res)=>{
+  const {alcohol} = req.params
+  cocktailAPI.getByLiquor(alcohol)
+  .then(apiResponse=>res.render("cocktails/filtered-liquor", {cocktails: apiResponse.data.drinks,alcohol}))
   .catch(console.log)
 })
 
