@@ -1,7 +1,10 @@
 var express = require('express');
 var router = express.Router();
+
 // to get user model
 const User = require("../models/User.model")
+
+const bcrypt = require('bcrypt');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -22,14 +25,13 @@ router.route('/signup')
 
   .then((user)=>{
     //to check if user already exists
-
     if(user)res.render("signup",{errorMessage:"user exists, try to log in"})
-    const salt = bcrypt.saltSync(saltRound)
+    const salt = bcrypt.genSaltSync(3)
     const hashPassword = bcrypt.hashSync(password, salt)
 
     //to crate the users if everything is find
 
-    User.create({username,password:hashPassword})
+    User.create({username, password:hashPassword})
     .then((req, res)=>{
       res.render("index")
     })
@@ -49,13 +51,18 @@ router.route("/login")
 .post((req, res)=>{
   // thinking to giv more options to user. user can use mail or username to login const usernameOrMail = username || email
   const {username, password} = req.body
+
   if(!username || !password) res.render("login", {errorMessage: "Username or password are required"})
   User.findOne({username})
+
   .then((user)=>{
+
     if(username) res.render("login", {errorMessage:"User does not exist"})
      // to check if the first pwd is matching the one encrypted from db
     const passwordCorrect = bcrypt.compareSync(password, user.password) 
+
     if(passwordCorrect)res.render("/index")
+
     else res.render("login", {errorMessage:"password is Wrong"})
   })
   .catch((error)=>{
