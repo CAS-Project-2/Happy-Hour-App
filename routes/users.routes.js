@@ -15,52 +15,126 @@ router.get('/', function(req, res, next) {
 
 // routes for signup or register
 router.route('/signup')
-.get((req, res) => {
-  res.render('signup');
-})
+  .get((req, res) => {
+    res.render('signup');
+  })
+  .post( async (req, res)=>{
+  const {username, email, password, favcocktail} = req.body
+    if(!username || !email || !password){
+      res.render("signup", { username, email, error:{type: "CRED_ERR", msg: "Missing credentials"}})
+    }
+
+    const user = await User.findOne({email})
+    if(user){
+      res.render("signup", { username, email, error:{type: "USR_ERR", msg: "Email exists"}})
+    }
+
+    const salt = bcrypt.genSaltSync(5)
+    const hashPwd = bcrypt.hashSync(password, salt)
+
+    await User.create({username, email, password: hashPwd, favcocktail})
+    res.redirect("/users/welcome-page")
+
+  })
+
+//LOGIN
+ router.route("/login")
+  .get((req, res, next)=>{
+    res.render("login")
+  })
 .post( async (req, res)=>{
-const {username, email, password, favcocktail} = req.body
-  if(!username || !email || !password){
-    res.render("signup", { username, email, error:{type: "CRED_ERR", msg: "Missing credentials"}})
-  }
+    const {username, password} = req.body
+    if(!username || !password){res.render("login", {error:{type: "CRED_ERR", msg: "Missing credentials"}})}
 
-  const user = await User.findOne({email})
-  if(user){
-    res.render("signup", { username, email, error:{type: "USR_ERR", msg: "Email exists"}})
-  }
-
-  const salt = bcrypt.genSaltSync(5)
-  const hashPwd = bcrypt.hashSync(password, salt)
-
-  await User.create({username, email, password: hashPwd, favcocktail})
-  res.render("welcome-page")
-
-
-})
-//login page now!!
-router.route("/login")
-
-.get((req, res, next)=>{
-  res.render("login")
-})
-
-.post( async (req, res)=>{
-  const {username, password} = req.body
-  if(!username || !password){res.render("login", {error:{type: "CRED_ERR", msg: "Missing credentials"}})}
-
-  const loggedInUser = await User.findOne({username})
-  if(!loggedInUser) {res.render("login", {error:{type: "USR_ERR", msg: "User does not exist"}})}
-  
-  const pwsIsCorrect = bcrypt.compareSync(password, loggedInUser.password)
-
-  if(pwsIsCorrect){
-    req.session.loggedInUser = loggedInUser
-    res.render("welcome-page")
-  }else{
-    res.render(res.render("login", {error:{type: "PWD_ERR", msg: "Password incorrect"}}))
-  }
+    const loggedInUser = await User.findOne({username})
+    if(!loggedInUser) {res.render("signup", {error:{type: "USR_ERR", msg: "User does not exist"}})}
     
+    const pwsIsCorrect = bcrypt.compareSync(password, loggedInUser.password)
+
+    if(pwsIsCorrect){
+      req.session.loggedInUser = loggedInUser
+      res.redirect("/users/welcome-page")
+      
+    }else{
+      res.render(res.render("login", {error:{type: "PWD_ERR", msg: "Password incorrect"}}))
+    }
+}) 
+
+//MAIN WELCOME PAGE
+router.route("/welcome-page")
+.get((req, res)=>{
+  
+  if(req.session.loggedInUser){
+    const {_id} = req.session.loggedInUser
+
+    User.findById(_id)
+    .then((user)=>{
+      res.render('welcome-page', {user})
+  
+    })
+  }else{
+    res.render('welcome-page')
+  }
+  
 })
+
+
+//PROFILE 
+router.route("/profile")
+.get((req, res)=>{
+
+  if(req.session.loggedInUser){
+    const {_id} = req.session.loggedInUser
+
+    User.findById(_id)
+    .then((user)=>{
+  
+      res.render('profile', {user})
+  
+    })
+  }else{
+    res.render("login")
+  }
+ 
+})
+
+
+//EDIT USER
+router.route("/:id/edit")
+  .get((req, res)=>{
+    const {_id} = req.session.loggedInUser
+    User.findById(_id)
+    .then((user)=>{
+      res.render('edit-profile', {user})
+  
+    })
+  })
+ .post((req, res)=>{
+  const {_id} = req.session.loggedInUser
+  const {username} = req.body
+  User.findByIdAndUpdate(_id, {username})
+  .then(()=>res.redirect(`/users/profile`))
+ })
+
+ //LOGOUT
+router.get('/logout', (req, res) => {
+	req.session.destroy((err) => {
+		if (err) res.redirect('/');
+		else res.redirect('/users/login');
+	});
+});
+
+
+
+
+
+
+
+//find user
+
+//find my cocktail
+
+//delete them
 
 //NEW COCKTAIL ROUTE TO DB
 
