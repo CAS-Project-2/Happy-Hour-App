@@ -124,11 +124,6 @@ router.get('/logout', (req, res) => {
 	});
 });
 
-//find user
-
-//find my cocktail
-
-//delete them
 
 // NEW COCKTAIL ROUTE TO DB
 
