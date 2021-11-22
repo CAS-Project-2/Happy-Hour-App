@@ -45,8 +45,8 @@ In this project we have used:
 
 **Credits**
 
-Carolina Romanos
-Snehith Reddy
+Carolina Romanos,
+Snehith Reddy and
 Amy Davies
 
 **License**
