@@ -1,39 +1,38 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-
 }
 
-.bottom-navbar{
+.bottom-navbar {
   background-color: gray;
   position: fixed;
-  bottom:0;
+  bottom: 0;
   left: 0;
   display: flex;
   justify-content: center;
   width: 100%;
-  border-top: 24px  solid gray;
-  border-bottom: 24px  solid gray;
+  border-top: 24px solid gray;
+  border-bottom: 24px solid gray;
   margin-left: 0;
-
-
-
-
-}
-.nav-links img{
-
-  width: 80px;
-  margin: 0px 100px
 }
 
-#cocktail-icon{
-  width: 70px;
+.nav-links {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.nav-links img {
+  width: 50px;
+}
+
+#cocktail-icon {
+  width: 40px;
 }
 a {
-  color: #00B7FF;
+  color: #00b7ff;
   text-decoration: none;
 }
-ul{
+ul {
   list-style-type: none;
 }
-
