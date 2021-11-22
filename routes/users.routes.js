@@ -9,9 +9,7 @@ const isLoggedIn = require('./../middleware/isLoggedIn')
 const multerUploader = require("../middleware/multerUploader")
 
 
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+
 
 // routes for signup or register
 router.route('/signup')
@@ -33,7 +31,7 @@ router.route('/signup')
     const hashPwd = bcrypt.hashSync(password, salt)
 
     await User.create({username, email, password: hashPwd, favcocktail})
-    res.redirect("/users/welcome-page")
+    res.redirect("/")
 
   })
 
@@ -60,23 +58,7 @@ router.route('/signup')
     }
 }) 
 
-//MAIN WELCOME PAGE
-router.route("/welcome-page")
-.get((req, res)=>{
-  
-  if(req.session.loggedInUser){
-    const {_id} = req.session.loggedInUser
 
-    User.findById(_id)
-    .then((user)=>{
-      res.render('welcome-page', {user})
-  
-    })
-  }else{
-    res.render('welcome-page')
-  }
-  
-})
 
 
 //PROFILE 

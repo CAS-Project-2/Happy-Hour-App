@@ -4,12 +4,24 @@ var router = express.Router();
 const User = require("../models/User.model")
 const Api = require("../apis/api")
 
-/* GET home page. */
-router.get('/', (req, res)=> {
-  User.find().then((users)=>
-  res.render('index', { title: 'Express', users})
-  )
-});
+
+//MAIN WELCOME PAGE
+router.route("/")
+.get((req, res)=>{
+  
+  if(req.session.loggedInUser){
+    const {_id} = req.session.loggedInUser
+
+    User.findById(_id)
+    .then((user)=>{
+      res.render('welcome-page', {user})
+  
+    })
+  }else{
+    res.render('welcome-page')
+  }
+  
+})
 
 /* GET from API */
 router.get('/api', (req, res)=> {
