@@ -13,7 +13,7 @@ router.get("/liquor", (req, res) => {
   res.render("cocktails/liquor");
 });
 
-//FILTER BY LIQUOR - NOT WORKING
+//FILTER BY LIQUOR 
 
 router.get("/liquor/:alcohol", (req, res) => {
   const { alcohol } = req.params;

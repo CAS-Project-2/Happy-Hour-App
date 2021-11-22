@@ -1,7 +1,8 @@
 <h1>Filter by liquor page</h1>
 <ul>
-  <li> <a href="/cocktail/liquor/Amaretto">Amaretto</a> </li>
-
+  {{#each liquors}}
+  <li> <a href=`/cocktail/liquor/${this.name}`>Amaretto</a> </li>
+{{/each}}
   <li> <a href="/cocktail/liquor/Bitters">Bitters</a> </li>
   <li><a href="/cocktail/liquor/Bourbon">Bourbon</a> </li>
   <li> <a href="/cocktail/liquor/Brandy">Brandy</a> </li>

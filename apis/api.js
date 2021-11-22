@@ -28,4 +28,5 @@ class Api {
 
 module.exports = new Api;
 
+const liquors = Set() // An array that does not repeat elements
 
