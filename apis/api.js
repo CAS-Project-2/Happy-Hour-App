@@ -1,7 +1,9 @@
 const axios = require("axios");
 class Api {
-  constructor(baseURL) { //baseUrl could be overwritten in the route that uses the API
-    this.baseURL = baseURL || process.env.API_URL
+  constructor(baseURL, id) { //baseUrl could be overwritten in the route that uses the API
+    this.baseURL = baseURL || process.env.API_URL,
+    
+
     this.api = axios.create(
       {
         baseURL: this.baseURL
@@ -9,8 +11,16 @@ class Api {
     )
   }
   // CHANGE THE PATHS ACCORIDNG TO API DOCUEMNTATION
-  getAll = () => this.api.get(`/search.php?f=a`)
-  // getOne = (id)=> this.api.get(`/${id}`)
+  getByLetter = (letter) => this.api.get(`/search.php?f=${letter}`)
+  getRandom = ()=> this.api.get(`/random.php`)
+  getById = (id)=> this.api.get(`/lookup.php?i=${id}`)
+  getByLiquor = (liquor)=> this.api.get(`/filter.php?i=${liquor}`)
+  getGlassList =()=>this.api.get(`/list.php?g=list`)
+  
+  filterByGlass = (glass)=> this.api.get(`/filter.php?g=${glass}`)
+  getByNonAlcoholic =()=>this.api.get(`/filter.php?a=Non_Alcoholic`)
+
+
   //createOne = (newEntityValues)=>this.api.post("/", newEntityValues)
   //deleteOne = (id)=> this.api.delete(`/${id}`)
   //updateOne = (id)=> this.api.put(`/${id}`)
@@ -19,4 +29,5 @@ class Api {
 
 module.exports = new Api;
 
+//const liquors = Set() // An array that does not repeat elements
 

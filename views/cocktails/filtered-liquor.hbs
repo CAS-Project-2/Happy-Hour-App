@@ -1,0 +1,11 @@
+<h1> {{alcohol}} </h1>
+
+<ul>
+
+{{#each cocktails}}
+    <li>{{strDrink}}</li>
+    <img src="{{strDrinkThumb}}" width="40px" alt="Cocktail Image">
+    <a href="/cocktail/{{idDrink}}">See</a>
+
+{{/each}}
+</ul>
