@@ -1,0 +1,90 @@
+<h1>Add a cocktail</h1>
+
+<form action='/cocktail/create-cocktail' method='POST'>
+
+	<label>Cocktail Name:</label>
+	<input class='input' type='text' name='name' required />
+
+
+	<label for="Alcoholic">Alcoholic?</label>
+	<select id="Alcoholic" name="Alcoholic?">
+		<option value="Select an option">Select an Option...</option>
+		<option value="Alcoholic">Alcoholic</option>
+		<option value="Non-Alcoholic">Non-Alcoholic</option>
+	</select>
+
+
+	<label for="glasstype">Glass Type:</label>
+	<select id="glasstype" name="Glass Type:">
+		<option value="Select an option">Select an Option...</option>
+		<option value="Highball glass">Highball Glass</option>
+		<option value="Cocktail glass">Cocktail Glass</option>
+		<option value="Old-fashioned glass">Old-Fashioned Glass</option>
+		<option value="Whiskey Glass">Whiskey Glass</option>
+		<option value="Collins Glass">Collins Glass</option>
+		<option value="Champagne flute">Champagne Flute</option>
+		<option value="Brandy snifter">Brandy Snifter</option>
+		<option value="Hurricane glass">Hurricane Glass</option>
+		<option value="Coffee mug">Coffee Mug</option>
+		<option value="Shot glass">Shot Glass</option>
+		<option value="Jar">Jar</option>
+		<option value="Punch bowl">Punch Bowl</option>
+		<option value="Pitcher">Pitcher</option>
+		<option value="Pint glass">Pint Glass</option>
+		<option value="Copper Mug">Copper Mug</option>
+		<option value="Wine glass">Wine Glass</option>
+		<option value="Margarita Glass">Margarita Glass</option>
+		<option value="Mason jar">Mason Jar</option>
+		<option value="Martini Glass">Martini Glass</option>
+		<option value="Coupe Glass">Coupe Glass</option>
+	</select>
+
+	</select>
+
+	<textarea name="Ingredients and Measures" rows="10" cols="30">Ingredients and Measures</textarea>
+
+	<textarea name="Instructions" rows="10" cols="30">Instructions</textarea>
+
+	<label class='label'>Owner:</label>
+
+	<select name="owner">
+		<option selected disabled value="">Select a owner..</option>
+		{{#each users}}
+		<option value="{{_id}}">{{ username }}</option>
+		{{/each}}
+	</select>
+
+
+	{{! <div class='field'>
+		<label class='label'>Image:</label>
+
+		<div class='control'>
+			<input class='input' type='file' name='imageUrl' required />
+		</div>
+
+	</div> }}
+
+	{{! <div class='file is-centered is-boxed is-success has-name' style='margin: 25px 0'>
+		<label class='file-label'>
+			<input class='file-input' type='file' name='imageUrl' />
+			<span class='file-cta'>
+				<span class='file-icon'>
+					<i class='fas fa-upload'></i>
+				</span>
+				<span class='file-label'>
+					Choose an image
+				</span>
+			</span>
+			<span class='file-name'>
+				Image must be 16x9 resolution
+			</span>
+		</label>
+	</div>}}
+
+	<button type='submit'>Create</button>
+</form>
+
+
+{{#if errorMessage}}
+<p>{{errorMessage}}</p>
+{{/if}}

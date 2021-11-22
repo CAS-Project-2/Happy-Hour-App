@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt")
 
 // to get user model
 const User = require("../models/User.model")
+const isLoggedIn = require('./../middleware/isLoggedIn')
 
 
 router.get('/', function(req, res, next) {
@@ -59,8 +60,22 @@ router.route("/login")
     
 })
 
+//NEW COCKTAIL ROUTE TO DB
 
+router.route("/create-cocktail",)
+.get((req, res)=>{
+  res.render("cocktails/create-form")
+})
+.post(isLoggedIn, async (req, res)=>{
+     console.log("hi")
+     const { cocktailName, alcoholic, glassType, ingredientsAndMeasures, instructions, owner } = req.body
+     console.log("req.body: ", req.body)
+     try {
+       if (!cocktailName || !alcoholic  || !ingredientsAndMeasures || !instructions ) throw new Error("All fields required")
+       const newCocktail = await Cocktail.create({ cocktailName, alcoholic, glassType, ingredientsAndMeasures, instructions, owner })
+       res.redirect("/cocktailDetails")
+     } catch (error) {
+       res.render("cocktails/cocktail-details", { error })
+     }})
 
-
-
-module.exports = router;
+   module.exports = router;

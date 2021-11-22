@@ -8,6 +8,8 @@ const router = express.Router();
 const cocktailAPI = require("../apis/api");
 const { response } = require("../app");
 
+
+
 //FILTER BY INGREDIENT
 
 router.get("/liquor", (req, res) => {
@@ -29,12 +31,6 @@ router.get("/liquor/:alcohol", (req, res) => {
     })
     .catch(console.log);
 });
-
-//ROUTE TO FRUITY-LIQUORS LIST
-
-// router.get("/fruity", (req, res) => {
-//   res.render("cocktails/fruity-list");
-// });
 
 //FILTER BY FRUITY-LIQUORS
 
