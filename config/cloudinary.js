@@ -4,18 +4,18 @@ const { CloudinaryStorage} = require('multer-storage-cloudinary')
 
 cloudinary.config(
   {
-    cloud_name: process.env.CLOUDINARY_NAME,
-    api_key: process.env.CLOUDINARY_KEY,
-    api_secret: process.env.CLOUDINARY_SECRET
+    cloud_name: process.env.CLOUDINARY_NAME, // add details to .env
+    api_key: process.env.CLOUDINARY_KEY, // add details to .env
+    api_secret: process.env.CLOUDINARY_SECRET // add details to .env
   }
 )
 
-const storage = new CloudinaryStorage({
+const cloudinaryCloudStorage = new CloudinaryStorage({
   cloudinary,
   params: {
     allowed_formats: ['svg', 'png', 'jpg'],
-    folder: 'cloudinary-test' // Folder name on the Cloudinary disk
+    folder: 'cloudinary-test' // change Folder name on the Cloudinary disk
   }
 })
 
-module.exports = multer({storage}) // Multer will be responsible for reading the forma and store on the cloud
+module.exports = cloudinaryCloudStorage  // Multer will be responsible for reading the form and store on the cloud

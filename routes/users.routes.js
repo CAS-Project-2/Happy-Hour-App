@@ -6,6 +6,8 @@ const bcrypt = require("bcrypt")
 const User = require("../models/User.model")
 const isLoggedIn = require('./../middleware/isLoggedIn')
 
+const multerUploader = require("../middleware/multerUploader")
+
 
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
@@ -66,7 +68,7 @@ router.route("/create-cocktail",)
 .get((req, res)=>{
   res.render("cocktails/create-form")
 })
-.post(isLoggedIn, async (req, res)=>{
+.post(isLoggedIn, multerUploader.single("imgUrl"), async (req, res)=>{
      console.log("hi")
      const { cocktailName, alcoholic, glassType, ingredientsAndMeasures, instructions, owner } = req.body
      console.log("req.body: ", req.body)
@@ -78,4 +80,8 @@ router.route("/create-cocktail",)
        res.render("cocktails/cocktail-details", { error })
      }})
 
+     //const {path: imgUrl} = req.file
+
    module.exports = router;
+
+   //multerUploader
