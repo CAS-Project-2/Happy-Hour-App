@@ -5,61 +5,58 @@ const bcrypt = require("bcrypt")
 // to get user model
 const User = require("../models/User.model")
 
-
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
 // routes for signup or register
 router.route('/signup')
-.get((req, res) => {
-  res.render('signup');
-})
-.post( async (req, res)=>{
-const {username, email, password, favcocktail} = req.body
-  if(!username || !email || !password){
-    res.render("signup", { username, email, error:{type: "CRED_ERR", msg: "Missing credentials"}})
-  }
+  .get((req, res) => {
+    res.render('signup');
+  })
+  .post( async (req, res)=>{
+  const {username, email, password, favcocktail} = req.body
+    if(!username || !email || !password){
+      res.render("signup", { username, email, error:{type: "CRED_ERR", msg: "Missing credentials"}})
+    }
 
-  const user = await User.findOne({email})
-  if(user){
-    res.render("signup", { username, email, error:{type: "USR_ERR", msg: "Email exists"}})
-  }
+    const user = await User.findOne({email})
+    if(user){
+      res.render("signup", { username, email, error:{type: "USR_ERR", msg: "Email exists"}})
+    }
 
-  const salt = bcrypt.genSaltSync(5)
-  const hashPwd = bcrypt.hashSync(password, salt)
+    const salt = bcrypt.genSaltSync(5)
+    const hashPwd = bcrypt.hashSync(password, salt)
 
-  await User.create({username, email, password: hashPwd, favcocktail})
-  res.redirect("/users/welcome-page")
+    await User.create({username, email, password: hashPwd, favcocktail})
+    res.redirect("/users/welcome-page")
 
+  })
 
-})
-//login page now!!
+//LOGIN
  router.route("/login")
-
   .get((req, res, next)=>{
     res.render("login")
   })
-
-
 .post( async (req, res)=>{
-  const {username, password} = req.body
-  if(!username || !password){res.render("login", {error:{type: "CRED_ERR", msg: "Missing credentials"}})}
+    const {username, password} = req.body
+    if(!username || !password){res.render("login", {error:{type: "CRED_ERR", msg: "Missing credentials"}})}
 
-  const loggedInUser = await User.findOne({username})
-  if(!loggedInUser) {res.render("login", {error:{type: "USR_ERR", msg: "User does not exist"}})}
-  
-  const pwsIsCorrect = bcrypt.compareSync(password, loggedInUser.password)
-
-  if(pwsIsCorrect){
-    req.session.loggedInUser = loggedInUser
-    res.redirect("/users/welcome-page")
-  }else{
-    res.render(res.render("login", {error:{type: "PWD_ERR", msg: "Password incorrect"}}))
-  }
+    const loggedInUser = await User.findOne({username})
+    if(!loggedInUser) {res.render("login", {error:{type: "USR_ERR", msg: "User does not exist"}})}
     
+    const pwsIsCorrect = bcrypt.compareSync(password, loggedInUser.password)
+
+    if(pwsIsCorrect){
+      req.session.loggedInUser = loggedInUser
+      res.redirect("/users/welcome-page")
+      
+    }else{
+      res.render(res.render("login", {error:{type: "PWD_ERR", msg: "Password incorrect"}}))
+    }
 }) 
-//logout
+
+//LOGOUT
 router.get('/logout', (req, res) => {
 	req.session.destroy((err) => {
 		if (err) res.redirect('/');
@@ -67,37 +64,43 @@ router.get('/logout', (req, res) => {
 	});
 });
 
-//profile
+//PROFILE 
 router.route("/profile")
 .get((req, res)=>{
-  res.render('profile')
+  const {_id} = req.session.loggedInUser
+
+  console.log(req.session.loggedInUser._id)
+
+  User.findById(_id)
+  .then((user)=>{
+    console.log(user)
+    res.render('profile', {user})
+
+  })
 })
 
-//welcome page
+//MAIN WELCOME PAGE
 router.route("/welcome-page")
 .get((req, res)=>{
   res.render('welcome-page')
 })
 
-// edit profile
-router.route("/edit-profile")
-.get((req, res)=>{
-  res.render('edit-profile')
-})
 
-//edit Username
+
+//EDIT USER
 router
   .route("/:id/edit")
   .get(async (req, res) => {
     try {
       const { id } = req.params;
+      console.log(id)
       const user = await User.findById(id);
       const allUsers = await User.find();
-      const filteredUsers = allUsers.filter((cel) => {
-        return !users.find((cas) => cel.name === cas.name);
-      });
+      //const filteredUsers = allUsers.filter((cel) => {
+       // return !user.find((cas) => cel.name === cas.name);
+     // });
 
-      res.render("users/edit-profile", { user, allUsers: filteredUsers });
+      res.render("users/edit-profile", { user });
     } catch (error) {
       console.log(error);
     }
@@ -115,9 +118,9 @@ router
     } catch (error) {
       console.log(error);
     }
-  });
+  }); 
 
-  router.post("/:id/delete", async (req, res) => {
+/*   router.post("/:id/delete", async (req, res) => {
     try {
       const { id } = req.params;
       const deletedFavorites = await User.findByIdAndDelete(id);
@@ -127,7 +130,7 @@ router
       console.log(error);
     }
   });
-
+ */
 
 
 
