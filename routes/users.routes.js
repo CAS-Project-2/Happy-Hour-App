@@ -145,6 +145,19 @@ router.route("/create-cocktail",)
 
      //const {path: imgUrl} = req.file
 
+
+  // USERS COCKTAIL-LIST
+
+  router.route('/my-cocktails', async (req, res) => {
+    try {
+        listUserCocktails = await UserCocktails.find()
+        res.render('cocktails/my-cocktails', { UserCocktails: listUserCocktails});
+    }
+    catch (error) {
+        res.render('cocktails/my-cocktails', {error});
+    }
+});
+
    module.exports = router;
 
   
