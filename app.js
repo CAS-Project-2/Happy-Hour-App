@@ -1,14 +1,24 @@
 require("dotenv").config();
+const path = require('path');
 
-var createError = require("http-errors");
-var express = require("express");
-
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users.routes");
-var cocktailRouter = require("./routes/cocktail.routes");
+const createError = require("http-errors");
+const express = require("express");
+const hbs = require('hbs');
 
 
-var app = express();
+const indexRouter = require("./routes/index");
+const usersRouter = require("./routes/users.routes");
+const cocktailRouter = require("./routes/cocktail.routes");
+
+const app = express();
+
+hbs.registerPartials(path.join(__dirname, "views/partials"))
+
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
+
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 require("./config/db");
 
@@ -19,8 +29,6 @@ require("./config/global")(app);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/cocktail", cocktailRouter);
-
-
 
 
 // catch 404 and forward to error handler
