@@ -117,6 +117,19 @@ router
     }
   });
 
+  router.post("/:id/delete", async (req, res) => {
+    try {
+      const { id } = req.params;
+      const deletedFavorites = await User.findByIdAndDelete(id);
+      console.log(deletedFavorites);
+      res.redirect("/users");
+    } catch (error) {
+      console.log(error);
+    }
+  });
+
+
+
 
 
 //find user
