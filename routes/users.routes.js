@@ -3,7 +3,8 @@ var router = express.Router();
 const bcrypt = require("bcrypt")
 
 // to get user model
-const User = require("../models/User.model")
+const User = require("../models/User.model");
+const isLoggedIn = require('../middleware/isLoggedIn');
 
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
@@ -59,28 +60,39 @@ router.route('/signup')
 //MAIN WELCOME PAGE
 router.route("/welcome-page")
 .get((req, res)=>{
-  const {_id} = req.session.loggedInUser
+  
+  if(req.session.loggedInUser){
+    const {_id} = req.session.loggedInUser
 
-  User.findById(_id)
-  .then((user)=>{
-    res.render('welcome-page', {user})
-
-  })
+    User.findById(_id)
+    .then((user)=>{
+      res.render('welcome-page', {user})
+  
+    })
+  }else{
+    res.render('welcome-page')
+  }
+  
 })
 
 
 //PROFILE 
-router.route("/profile/:id")
+router.route("/profile")
 .get((req, res)=>{
 
-  const {_id} = req.session.loggedInUser
+  if(req.session.loggedInUser){
+    const {_id} = req.session.loggedInUser
 
-  User.findById(_id)
-  .then((user)=>{
-
-    res.render('profile', {user})
-
-  })
+    User.findById(_id)
+    .then((user)=>{
+  
+      res.render('profile', {user})
+  
+    })
+  }else{
+    res.render("login")
+  }
+ 
 })
 
 
@@ -98,7 +110,7 @@ router.route("/:id/edit")
   const {_id} = req.session.loggedInUser
   const {username} = req.body
   User.findByIdAndUpdate(_id, {username})
-  .then(()=>res.redirect(`/users/profile/${_id}`))
+  .then(()=>res.redirect(`/users/profile`))
  })
 
  //LOGOUT
