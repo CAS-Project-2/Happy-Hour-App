@@ -5,7 +5,6 @@
 	<label>Cocktail Name:</label>
 	<input class='input' type='text' name='name' required />
 
-
 	<label for="Alcoholic">Alcoholic?</label>
 	<select id="Alcoholic" name="Alcoholic?">
 		<option value="Select an option">Select an Option...</option>
@@ -17,26 +16,26 @@
 	<label for="glasstype">Glass Type:</label>
 	<select id="glasstype" name="Glass Type:">
 		<option value="Select an option">Select an Option...</option>
-		<option value="Highball glass">Highball Glass</option>
-		<option value="Cocktail glass">Cocktail Glass</option>
-		<option value="Old-fashioned glass">Old-Fashioned Glass</option>
-		<option value="Whiskey Glass">Whiskey Glass</option>
-		<option value="Collins Glass">Collins Glass</option>
-		<option value="Champagne flute">Champagne Flute</option>
 		<option value="Brandy snifter">Brandy Snifter</option>
-		<option value="Hurricane glass">Hurricane Glass</option>
+		<option value="Champagne flute">Champagne Flute</option>
+		<option value="Cocktail glass">Cocktail Glass</option>
 		<option value="Coffee mug">Coffee Mug</option>
-		<option value="Shot glass">Shot Glass</option>
-		<option value="Jar">Jar</option>
-		<option value="Punch bowl">Punch Bowl</option>
-		<option value="Pitcher">Pitcher</option>
-		<option value="Pint glass">Pint Glass</option>
+		<option value="Collins Glass">Collins Glass</option>
 		<option value="Copper Mug">Copper Mug</option>
-		<option value="Wine glass">Wine Glass</option>
-		<option value="Margarita Glass">Margarita Glass</option>
-		<option value="Mason jar">Mason Jar</option>
-		<option value="Martini Glass">Martini Glass</option>
 		<option value="Coupe Glass">Coupe Glass</option>
+		<option value="Highball glass">Highball Glass</option>
+		<option value="Hurricane glass">Hurricane Glass</option>
+		<option value="Jar">Jar</option>
+		<option value="Mason jar">Mason Jar</option>
+		<option value="Margarita Glass">Margarita Glass</option>
+		<option value="Martini Glass">Martini Glass</option>
+		<option value="Old-fashioned glass">Old-Fashioned Glass</option>
+		<option value="Pint glass">Pint Glass</option>
+		<option value="Pitcher">Pitcher</option>
+		<option value="Punch bowl">Punch Bowl</option>
+		<option value="Shot glass">Shot Glass</option>
+		<option value="Whiskey Glass">Whiskey Glass</option>
+		<option value="Wine glass">Wine Glass</option>	
 	</select>
 
 	</select>
@@ -53,7 +52,6 @@
 		<option value="{{_id}}">{{ username }}</option>
 		{{/each}}
 	</select>
-
 
 	{{! <div class='field'>
 		<label class='label'>Image:</label>
@@ -83,7 +81,6 @@
 
 	<button type='submit'>Create</button>
 </form>
-
 
 {{#if errorMessage}}
 <p>{{errorMessage}}</p>
