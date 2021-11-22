@@ -124,19 +124,13 @@ router.get('/logout', (req, res) => {
 	});
 });
 
-
-
-
-
-
-
 //find user
 
 //find my cocktail
 
 //delete them
 
-//NEW COCKTAIL ROUTE TO DB
+// NEW COCKTAIL ROUTE TO DB
 
 router.route("/create-cocktail",)
 .get((req, res)=>{
@@ -154,6 +148,19 @@ router.route("/create-cocktail",)
      }})
 
      //const {path: imgUrl} = req.file
+
+
+  // USERS COCKTAIL-LIST
+
+  router.route('/my-cocktails', async (req, res) => {
+    try {
+        listUserCocktails = await UserCocktails.find()
+        res.render('cocktails/my-cocktails', { UserCocktails: listUserCocktails});
+    }
+    catch (error) {
+        res.render('cocktails/my-cocktails', {error});
+    }
+});
 
    module.exports = router;
 
