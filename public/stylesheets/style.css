@@ -1,7 +1,22 @@
 body {
-  padding: 50px;
+  margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 
+}
+
+.top-navbar{
+  width: 100%;
+  background-color: gray;
+  border-top: 24px  solid gray;
+  border-bottom: 24px  solid gray;
+  display: flex;
+  justify-content: end;
+  margin-bottom: 30px;
+}
+
+#profile-icon{
+  width: 70px;
+  margin-right: 40px;
 }
 
 .bottom-navbar{
@@ -11,17 +26,13 @@ body {
   left: 0;
   display: flex;
   justify-content: center;
+  height: -40px;
   width: 100%;
   border-top: 24px  solid gray;
   border-bottom: 24px  solid gray;
   margin-left: 0;
-
-
-
-
 }
 .nav-links img{
-
   width: 80px;
   margin: 0px 100px
 }
