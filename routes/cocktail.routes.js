@@ -30,11 +30,6 @@ router.get("/liquor/:alcohol", (req, res) => {
     .catch(console.log);
 });
 
-//ROUTE TO FRUITY-LIQUORS LIST
-
-// router.get("/fruity", (req, res) => {
-//   res.render("cocktails/fruity-list");
-// });
 
 //FILTER BY FRUITY-LIQUORS
 
@@ -144,9 +139,7 @@ router.get("/glasses/:glass", (req, res) => {
     .filterByGlass(glass)
     .then((apiResponse) => {
       console.log(glass);
-      res.render("cocktails/cocktailsByGlass", {
-        //glasses: apiResponse.data.drinks,glass: glass.replace("_", " ")
-      });
+      res.render("cocktails/cocktailsByGlass", {glasses: apiResponse.data.drinks, glass });
     })
     .catch(console.log);
 });
