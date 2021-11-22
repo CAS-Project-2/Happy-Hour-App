@@ -1,6 +1,7 @@
 const express = require('express');
 const res = require('express/lib/response');
 const async = require('hbs/lib/async');
+const api = require('../apis/api');
 
 const router = express.Router();
 
@@ -74,6 +75,7 @@ router.get("/alphabet/:letter", (req, res)=>{
 
 // GLASS FILTER LIST
 router.get("/glasses", (req,res)=>{
+
   cocktailAPI.getGlassList()
   .then(apiResponse=>{
     res.render("cocktails/glass-list", {glasses: apiResponse.data.drinks})

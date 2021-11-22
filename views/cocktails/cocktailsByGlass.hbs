@@ -1,9 +1,10 @@
 <h1>Glass cocktails</h1>
 <h1>Cocktails</h1>
-<ul>
+
+ <ul>
 
 {{#each glasses}}
-    <li>{{strDrink}}</li>
+    <li>{{this.strDrink}}</li>
     <img src="{{strDrinkThumb}}" width="40px" alt="Cocktail Image">
     <a href="/cocktail/{{idDrink}}">See</a>
 

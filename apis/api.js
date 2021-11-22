@@ -15,7 +15,8 @@ class Api {
   getRandom = ()=> this.api.get(`/random.php`)
   getById = (id)=> this.api.get(`/lookup.php?i=${id}`)
   getByLiquor = (liquor)=> this.api.get(`/filter.php?i=${liquor}`)
-  getGlassList =(glass)=>this.api.get(`/list.php?g=list`)
+  getGlassList =()=>this.api.get(`/list.php?g=list`)
+  
   filterByGlass = (glass)=> this.api.get(`/filter.php?g=${glass}`)
   getByNonAlcoholic =()=>this.api.get(`/filter.php?a=Non_Alcoholic`)
 
