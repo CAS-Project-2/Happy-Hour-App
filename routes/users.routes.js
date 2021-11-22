@@ -69,9 +69,8 @@ router.route("/create-cocktail",)
   res.render("cocktails/create-form")
 })
 .post(isLoggedIn, multerUploader.single("imgUrl"), async (req, res)=>{
-     console.log("hi")
      const { cocktailName, alcoholic, glassType, ingredientsAndMeasures, instructions, owner } = req.body
-     console.log("req.body: ", req.body)
+     console.log("req.body:", req.body)
      try {
        if (!cocktailName || !alcoholic  || !ingredientsAndMeasures || !instructions ) throw new Error("All fields required")
        const newCocktail = await Cocktail.create({ cocktailName, alcoholic, glassType, ingredientsAndMeasures, instructions, owner })
@@ -84,4 +83,4 @@ router.route("/create-cocktail",)
 
    module.exports = router;
 
-   //multerUploader
+  
