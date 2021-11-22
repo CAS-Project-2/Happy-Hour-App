@@ -129,12 +129,6 @@ router.get('/logout', (req, res) => {
 
 //find user
 
-//edit user name and update them
-
-//find my cocktail
-
-// edit my cocktail and update them
-
 //find my cocktail
 
 //delete them
@@ -144,19 +138,3 @@ router.get('/logout', (req, res) => {
 
 
 module.exports = router;
-/* router
-  .route("/:id/edit")
-  .get(async (req, res) => {
-    try {
-      const { id } = req.params;
-      const user = await User.findById(id).populate('user');
-     // const allCelebs = await Celebrity.find();
-      const filteredUser = user.filter((cel) => {
-        return !users.user.find((cas) => cel.name === cas.name);
-      });
-
-      res.render("profile/username", { user, user: filteredUser });
-    } catch (error) {
-      console.log(error);
-    }
-  }) */
