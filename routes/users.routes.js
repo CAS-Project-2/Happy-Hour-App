@@ -43,7 +43,7 @@ router.route('/signup')
     if(!username || !password){res.render("login", {error:{type: "CRED_ERR", msg: "Missing credentials"}})}
 
     const loggedInUser = await User.findOne({username})
-    if(!loggedInUser) {res.render("login", {error:{type: "USR_ERR", msg: "User does not exist"}})}
+    if(!loggedInUser) {res.render("signup", {error:{type: "USR_ERR", msg: "User does not exist"}})}
     
     const pwsIsCorrect = bcrypt.compareSync(password, loggedInUser.password)
 
@@ -56,7 +56,52 @@ router.route('/signup')
     }
 }) 
 
-//LOGOUT
+//MAIN WELCOME PAGE
+router.route("/welcome-page")
+.get((req, res)=>{
+  const {_id} = req.session.loggedInUser
+
+  User.findById(_id)
+  .then((user)=>{
+    res.render('welcome-page', {user})
+
+  })
+})
+
+
+//PROFILE 
+router.route("/profile/:id")
+.get((req, res)=>{
+
+  const {_id} = req.session.loggedInUser
+
+  User.findById(_id)
+  .then((user)=>{
+
+    res.render('profile', {user})
+
+  })
+})
+
+
+//EDIT USER
+router.route("/:id/edit")
+  .get((req, res)=>{
+    const {_id} = req.session.loggedInUser
+    User.findById(_id)
+    .then((user)=>{
+      res.render('edit-profile', {user})
+  
+    })
+  })
+ .post((req, res)=>{
+  const {_id} = req.session.loggedInUser
+  const {username} = req.body
+  User.findByIdAndUpdate(_id, {username})
+  .then(()=>res.redirect(`/users/profile/${_id}`))
+ })
+
+ //LOGOUT
 router.get('/logout', (req, res) => {
 	req.session.destroy((err) => {
 		if (err) res.redirect('/');
@@ -64,73 +109,8 @@ router.get('/logout', (req, res) => {
 	});
 });
 
-//PROFILE 
-router.route("/profile")
-.get((req, res)=>{
-  const {_id} = req.session.loggedInUser
-
-  console.log(req.session.loggedInUser._id)
-
-  User.findById(_id)
-  .then((user)=>{
-    console.log(user)
-    res.render('profile', {user})
-
-  })
-})
-
-//MAIN WELCOME PAGE
-router.route("/welcome-page")
-.get((req, res)=>{
-  res.render('welcome-page')
-})
 
 
-
-//EDIT USER
-router
-  .route("/:id/edit")
-  .get(async (req, res) => {
-    try {
-      const { id } = req.params;
-      console.log(id)
-      const user = await User.findById(id);
-      const allUsers = await User.find();
-      //const filteredUsers = allUsers.filter((cel) => {
-       // return !user.find((cas) => cel.name === cas.name);
-     // });
-
-      res.render("users/edit-profile", { user });
-    } catch (error) {
-      console.log(error);
-    }
-  })
-  .post(async (req, res) => {
-    try {
-      const { id } = req.params;
-      const {username, favorites} = req.body;
-      const updatedUser = await User.findByIdAndUpdate(
-        id,
-        { username, favorites },
-        { new: true }
-      );
-      res.redirect(`/users/${id}`);
-    } catch (error) {
-      console.log(error);
-    }
-  }); 
-
-/*   router.post("/:id/delete", async (req, res) => {
-    try {
-      const { id } = req.params;
-      const deletedFavorites = await User.findByIdAndDelete(id);
-      console.log(deletedFavorites);
-      res.redirect("/users");
-    } catch (error) {
-      console.log(error);
-    }
-  });
- */
 
 
 
