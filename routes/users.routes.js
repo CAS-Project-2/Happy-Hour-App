@@ -119,15 +119,17 @@ router.route("/create-cocktail")
           console.log(error)
         }
     })
-    .post(async (req,res)=>{
+    .post(multerUploader.single("imgUrl"),async (req,res)=>{
         try{
    
-        const {name, alcoholic, glass, ingredients, instructions, owner, imgUrl}= req.body
+        const {name, alcoholic, glass, ingredients, instructions, owner}= req.body
     
         if(!name || !ingredients || !instructions){
           res.render("cocktails/create-form", { name, ingredients, instructions, error:{type: "CKTAIL_ERR", msg: "Missing fields"}})
         }
-      
+
+        const imgUrl = req.file.path
+
         await Cocktail.create({name, alcoholic, glass, ingredients, instructions, owner, imgUrl})
         res.redirect("/users/my-cocktails" )
 
