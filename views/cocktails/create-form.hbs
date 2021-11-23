@@ -1,12 +1,12 @@
 <h1>Add a cocktail</h1>
 
-<form action='/cocktail/create-cocktail' method='POST' enctype="multipart/form-data" />
+<form action='/users/create-cocktail' method='POST' enctype="multipart/form-data" />
 
 	<label>Cocktail Name:</label>
-	<input class='input' type='text' name='name' required />
+	<input class='input' type='text' name='cocktailName' required />
 
 	<label for="Alcoholic">Alcoholic?</label>
-	<select id="Alcoholic" name="Alcoholic?">
+	<select id="Alcoholic" name="alcoholic">
 		<option value="Select an option">Select an Option...</option>
 		<option value="Alcoholic">Alcoholic</option>
 		<option value="Non-Alcoholic">Non-Alcoholic</option>
@@ -14,7 +14,7 @@
 
 
 	<label for="glasstype">Glass Type:</label>
-	<select id="glasstype" name="Glass Type:">
+	<select id="glasstype" name="glassType">
 		<option value="Select an option">Select an Option...</option>
 		<option value="Brandy snifter">Brandy Snifter</option>
 		<option value="Champagne flute">Champagne Flute</option>
@@ -40,9 +40,9 @@
 
 	</select>
 
-	<textarea name="Ingredients and Measures" rows="10" cols="30">Ingredients and Measures</textarea>
+	<textarea name="ingredients" rows="10" cols="30">Ingredients and Measures</textarea>
 
-	<textarea name="Instructions" rows="10" cols="30">Instructions</textarea>
+	<textarea name="instructions" rows="10" cols="30">Instructions</textarea>
 
 	<label class='label'>Owner:</label>
 
