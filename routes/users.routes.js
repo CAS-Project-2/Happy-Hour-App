@@ -60,8 +60,6 @@ router.route('/signup')
 }) 
 
 
-
-
 //PROFILE 
 router.route("/profile")
 .get((req, res)=>{
@@ -199,6 +197,7 @@ router.get("/my-cocktails", (req,res)=>{
   const {_id} = req.session.loggedInUser
   Cocktail.find({owner: _id})
   .then((cocktails)=>{
+    console.log(cocktails)
     res.render("cocktails/my-cocktails", {cocktails})
   })
   .catch(console.log)
