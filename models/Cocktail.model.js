@@ -5,22 +5,21 @@ const cocktailSchema = new Schema({
 	name: {
 		type: String,
 		required: true
-// maybe add a unique name requirement here
 	},
-	alcholic: {
-		type: Boolean, 
-        required: true
+	alcoholic: {
+		type: String
+ 
 	},
 	glass: {
 		type: String,
 	},
     ingredients: {
-        type: [{type: String}],
+        type: String,
         required: true,
     },
-    owner: {
-		type: Schema.Types.ObjectId, ref: 'User'
-	},
+	instructions:{type:String, required:true},
+	
+    owner: {type: Schema.Types.ObjectId, ref: "User"},
     
 	imgUrl: {
 		type: String,
@@ -30,6 +29,6 @@ const cocktailSchema = new Schema({
     
 });
 
-module.exports = model('User', cocktailSchema);
+module.exports = model('Cocktail', cocktailSchema);
 
 
