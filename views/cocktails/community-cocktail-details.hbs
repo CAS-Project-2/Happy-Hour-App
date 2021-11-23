@@ -6,7 +6,13 @@
     <li>Ingredients: {{cocktail.ingredients}}</li>
     <li>Instructions: {{cocktail.instructions}}</li>
     <img width="80px" src="{{cocktail.imgUrl}}" alt="Cocktail Image">
-    <a href="/cocktail/community/{{cocktail.id}}/edit">Edit</a>
-    <a href="/cocktail/community/{{cocktail.id}}/delete">Delete</a>
-
+    
+    {{#if showEdit }}
+        <a href="/cocktail/community/{{cocktail.id}}/edit">Edit</a>
+    {{/if}}
+    
+    {{#if showDelete }}
+        <a href="/cocktail/community/{{cocktail.id}}/delete">Delete</a>
+    {{/if}}
 </ul>
+

@@ -153,33 +153,71 @@ router.get("/non-alcoholic", (req, res) => {
     .catch(console.log);
 });
 
+
+router.get("/community/:id/delete", (req, res)=>{
+  const {id} = req.params
+
+  Cocktail.findByIdAndDelete(id)
+  .then(()=>{
+    res.redirect("/cocktail/community");
+  })
+
+})
+
+router.route("/community/:id/edit")
+.get((req, res) => {
+
+  const {id } = req.params
+  Cocktail.findById(id).populate("User")
+  .then((cocktail)=>{
+    res.render("cocktails/edit-form", {cocktail})
+  })
+  .catch((error)=>{
+    console.log(error)
+  })
+})
+.post((req, res) => {
+
+  const {id} = req.params
+  const {name, alcoholic, glass, ingredients, instructions, owner} = req.body
+  
+
+    Cocktail.findByIdAndUpdate(id, {name, alcoholic, glass, ingredients, instructions, owner}, {new: true} )
+    .then(()=>{
+      res.redirect(`/cocktail/community`);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+
+router.get("/community/:id", (req, res)=>{
+
+  const {id}= req.params
+  Cocktail.findById(id).populate("User")
+  .then((cocktail)=>{
+
+    if (req.session.loggedInUser._id == cocktail.owner) {
+      console.log(req.session.loggedInUser._id, cocktail.owner)
+      console.log("hello")
+      var showEdit = true; 
+      var showDelete = true;
+    } 
+    res.render("cocktails/community-cocktail-details", {cocktail, showEdit, showDelete})
+
+  })
+
+})
 router.get("/community", (req, res)=>{
   Cocktail.find()
   .then((cocktails)=>{
     res.render("cocktails/community-cocktails", {cocktails})
-  
 
-    /*     if (req.session.loggedInUser.username == recipe.author.username) {
-      const showEdit = true; // IF SESSION === User, WE CREATE A VARIABLE TO DISPLAY “EDIT” BUTTON
-      const showDelete = true;
-    } */
   })
 
 })
-router.get("/community/:id", (req, res)=>{
-  const {id}= req.params
-  Cocktail.findById(id)
-  .then((cocktail)=>{
-    res.render("cocktails/community-cocktail-details", {cocktail})
-   
 
-    /*     if (req.session.loggedInUser.username == recipe.author.username) {
-      const showEdit = true; // IF SESSION === User, WE CREATE A VARIABLE TO DISPLAY “EDIT” BUTTON
-      const showDelete = true;
-    } */
-  })
-
-})
 
 //GET RANDOM COCKTAIL
 router.get("/random", (req, res) => {
