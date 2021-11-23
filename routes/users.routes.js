@@ -158,6 +158,35 @@ router.route("/create-cocktail",)
     }
 });
 
+// USERS Favorites
+router.route('/my-favorites', async (req,res)=>{
+  try{
+    listMyFavorites = await UserFavorites.find()
+    res.render('cocktails/my-favorites', {UserFavorites: listMyFavorites})
+  }
+  catch(error){
+    res.render('cocktails/my-favorites')
+  }
+})
+
+
+// to get fav btn
+router.get("/add-to-favorites/:id", (req, res)=>{
+  let userId = req.session.loggedInUser._id;
+
+  let cocktailId = req.params.id
+  User.findByIdAndUpdate(userId, {$push:{favorites:cocktailId}})
+  .then(()=>{
+    res.redirect('/users/profile')
+  })
+  .catch(console.log)
+});
+
+
+
+
+
+
    module.exports = router;
 
   

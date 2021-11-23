@@ -57,7 +57,7 @@ router.get("/coffee", (req, res) => {
   cocktailAPI
     .getByLiquor(alcohol)
     .then((apiResponse) => {
-      console.log(apiResponse.data.drinks);
+  
       res.render("cocktails/coffee-list", {
         cocktails: apiResponse.data.drinks,
         alcohol,
