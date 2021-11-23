@@ -152,11 +152,11 @@ router.route("/my-cocktails/:id/edit")
   })
 })
 .post((req, res) => {
-  console.log
+
   const {id} = req.params
   const {name, alcoholic, glass, ingredients, instructions, owner} = req.body
   
-  console.log("COCKTAIL params", req.body)
+
     Cocktail.findByIdAndUpdate(id, {name, alcoholic, glass, ingredients, instructions, owner}, {new: true} )
     .then(()=>{
       res.redirect(`/users/my-cocktails/${id}`);
@@ -197,7 +197,7 @@ router.get("/my-cocktails", (req,res)=>{
   const {_id} = req.session.loggedInUser
   Cocktail.find({owner: _id})
   .then((cocktails)=>{
-    console.log(cocktails)
+
     res.render("cocktails/my-cocktails", {cocktails})
   })
   .catch(console.log)

@@ -5,6 +5,8 @@ const api = require('../apis/api');
 
 const router = express.Router();
 
+const Cocktail = require("../models/Cocktail.model")
+
 const cocktailAPI = require("../apis/api");
 
 
@@ -18,7 +20,7 @@ router.get("/liquor", (req, res) => {
 
 router.get("/liquor/:alcohol", (req, res) => {
   const { alcohol } = req.params;
-  console.log("hello");
+
   cocktailAPI
     .getByLiquor(alcohol)
     .then((apiResponse) => {
@@ -34,11 +36,11 @@ router.get("/liquor/:alcohol", (req, res) => {
 
 router.get("/fruity", (req, res) => {
   const { alcohol } = req.params;
-  console.log("hello");
+
   cocktailAPI
     .getByLiquor(alcohol)
     .then((apiResponse) => {
-      console.log(apiResponse.data.drinks);
+
       res.render("cocktails/fruity-list", {
         cocktails: apiResponse.data.drinks,
         alcohol,
@@ -51,7 +53,7 @@ router.get("/fruity", (req, res) => {
 
 router.get("/coffee", (req, res) => {
   const { alcohol } = req.params;
-  console.log("hello");
+
   cocktailAPI
     .getByLiquor(alcohol)
     .then((apiResponse) => {
@@ -68,11 +70,9 @@ router.get("/coffee", (req, res) => {
 
 router.get("/whiskies", (req, res) => {
   const { alcohol } = req.params;
-  console.log("hello");
   cocktailAPI
     .getByLiquor(alcohol)
     .then((apiResponse) => {
-      console.log(apiResponse.data.drinks);
       res.render("cocktails/whiskies-list", {
         cocktails: apiResponse.data.drinks,
         alcohol,
@@ -85,11 +85,9 @@ router.get("/whiskies", (req, res) => {
 
 router.get("/rums", (req, res) => {
   const { alcohol } = req.params;
-  console.log("hello");
   cocktailAPI
     .getByLiquor(alcohol)
     .then((apiResponse) => {
-      console.log(apiResponse.data.drinks);
       res.render("cocktails/rums-list", {
         cocktails: apiResponse.data.drinks,
         alcohol,
@@ -129,7 +127,7 @@ router.get("/glasses", (req,res)=>{
   .catch(console.log)
 })
 
-//GLASS FILTERED !!NOT WORKING!!
+//GLASS FILTERED
 
 router.get("/glasses/:glass", (req, res) => {
   const { glass } = req.params;
@@ -137,7 +135,7 @@ router.get("/glasses/:glass", (req, res) => {
   cocktailAPI
     .filterByGlass(glass)
     .then((apiResponse) => {
-      console.log(glass);
+     
       res.render("cocktails/cocktailsByGlass", {glasses: apiResponse.data.drinks, glass });
     })
     .catch(console.log);
@@ -155,12 +153,40 @@ router.get("/non-alcoholic", (req, res) => {
     .catch(console.log);
 });
 
+router.get("/community", (req, res)=>{
+  Cocktail.find()
+  .then((cocktails)=>{
+    res.render("cocktails/community-cocktails", {cocktails})
+  
+
+    /*     if (req.session.loggedInUser.username == recipe.author.username) {
+      const showEdit = true; // IF SESSION === User, WE CREATE A VARIABLE TO DISPLAY “EDIT” BUTTON
+      const showDelete = true;
+    } */
+  })
+
+})
+router.get("/community/:id", (req, res)=>{
+  const {id}= req.params
+  Cocktail.findById(id)
+  .then((cocktail)=>{
+    res.render("cocktails/community-cocktail-details", {cocktail})
+   
+
+    /*     if (req.session.loggedInUser.username == recipe.author.username) {
+      const showEdit = true; // IF SESSION === User, WE CREATE A VARIABLE TO DISPLAY “EDIT” BUTTON
+      const showDelete = true;
+    } */
+  })
+
+})
+
 //GET RANDOM COCKTAIL
 router.get("/random", (req, res) => {
   cocktailAPI
     .getRandom()
     .then((apiResponse) => {
-      res.render("cocktails/cocktail-details", {
+      res.render("cocktails/random-cocktail", {
         cocktail: apiResponse.data.drinks[0],
       });
     })
