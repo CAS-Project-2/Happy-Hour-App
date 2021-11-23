@@ -1,14 +1,14 @@
-<h1>Hello! This is your profile </h1>
-
-<h2>Username: {{user.username}}</h2>
-<h2>Email address: {{user.email}}</h2>
-<h2><a href="/users/my-cocktails">My cocktails</a></h2>
-
-
-
+<h2>Hello {{user.username}} ! </h2>
+<br>
+<h3>Username: {{user.username}}</h3>
+<br>
+<h3>Email Address: {{user.email}}</h3>
+<br>
+<h3><a href="/users/my-cocktails">My cocktails</a></h3>
+<br>
 <a href ="/users/{{user._id}}/edit"><button type="submit">Edit profile</button></a>
-
-
+<br>
 <form action="/users/logout" method="GET">
-  <button type="submit">Logout</button>
+<br>
+<button type="submit">Logout</button>
 </form>
