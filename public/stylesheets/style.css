@@ -1,15 +1,31 @@
 body {
-  padding: 50px;
+  margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-.bottom-navbar {
+.top-navbar{
+  width: 100%;
+  background-color: gray;
+  border-top: 24px  solid gray;
+  border-bottom: 24px  solid gray;
+  display: flex;
+  justify-content: end;
+  margin-bottom: 30px;
+}
+
+#profile-icon{
+  width: 70px;
+  margin-right: 40px;
+}
+
+.bottom-navbar{
   background-color: gray;
   position: fixed;
   bottom: 0;
   left: 0;
   display: flex;
   justify-content: center;
+  height: -40px;
   width: 100%;
   border-top: 24px solid gray;
   border-bottom: 24px solid gray;
