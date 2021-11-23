@@ -1,9 +1,9 @@
-<h1>Add a cocktail</h1>
+<h1>Edit your cocktail</h1>
 
-<form action='/users/create-cocktail' method='POST' />
+<form action='/users/my-cocktails/{{cocktail.id}}/edit' method='POST' />
 
 	<label for="name">Cocktail Name:</label>
-	<input class='input' type='text' name='name' required />
+	<input class='input' type='text' name='name' value="{{cocktail.name}}" required />
 
 	<label for="alcoholic">Alcoholic?</label>
 	<select id="alcoholic" name="alcoholic" required>
@@ -11,7 +11,6 @@
 		<option value="Alcoholic">Alcoholic</option>
 		<option value="Non alcoholic" >Non Alcoholic</option>
 	</select>
-	</li>
 
 
 	<label for="glass">Glass Type:</label>
@@ -38,27 +37,24 @@
 		<option value="Whiskey Glass">Whiskey Glass</option>
 		<option value="Wine glass">Wine Glass</option>	
 	</select>
-	</li>
 
 	</select>
 
-	<textarea name="ingredients" rows="10" cols="30" placeholder="Ingredients and Measures"></textarea>
+	<textarea name="ingredients" rows="10" cols="30" placeholder="Ingredients and Measures">{{cocktail.ingredients}}</textarea>
 
-	<textarea name="instructions" rows="10" cols="30" placeholder="Instructions"></textarea>
+	<textarea name="instructions" rows="10" cols="30" placeholder="Instructions">{{cocktail.instructions}}</textarea>
 
 	<label for="owner"></label>
-	<input hidden class='input' type='text' name='owner' data-owner-name= "{{user.username}}" value="{{ user._id }}" readonly />
+	<input hidden class='input' type='text' name='owner' data-owner-name= "{{user.username}}" value="{{ cocktail.owner}}" readonly />
 
 	
-{{!-- 
-	<label> Cocktail Image:</label>
-  	<input type="file" name="imgUrl" />		 --}}
- 
-	<button class='button is-rounded is-danger' type='submit'>Create</button>
-	</li>
-	</ul>
-</form>
 
+{{!-- 	<label> Cocktail Image:</label>
+  	<input type="file" name="imgUrl" />		
+  --}}
+	<button class='button is-rounded is-danger' type='submit'>Edit</button>
+
+</form>
 
 {{#if errorMessage}}
 <p>{{errorMessage}}</p>

@@ -6,8 +6,6 @@ const api = require('../apis/api');
 const router = express.Router();
 
 const cocktailAPI = require("../apis/api");
-const { response } = require("../app");
-
 
 
 //FILTER BY INGREDIENT
