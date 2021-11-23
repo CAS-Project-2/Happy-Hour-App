@@ -1,0 +1,13 @@
+<h1>Hey, check peoples recipes!</h1>
+
+
+<ul>
+
+{{#each cocktails}}
+   <img src="{{imgUrl}}" width="30px" alt="Cocktail Image"> 
+    <li>{{name}}</li>
+ 
+    <a href="/coktail/community/{{id}}">See</a>
+
+{{/each}}
+</ul>
