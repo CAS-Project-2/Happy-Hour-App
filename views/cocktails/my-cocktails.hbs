@@ -1,14 +1,13 @@
 <h1>Hey, here is a list of your cocktails</h1>
 
+
 <ul>
 
 {{#each cocktails}}
-    <li>{{strDrink}}</li>
-    <img src="{{strDrinkThumb}}" width="40px" alt="Cocktail Image">
-    <a href="/cocktail/{{idDrink}}">See</a>
+   <img src="{{imgUrl}}" width="30px" alt="Cocktail Image"> 
+    <li>{{name}}</li>
+ 
+    <a href="/users/my-cocktails/{{id}}">See</a>
+
 {{/each}}
-
 </ul>
-
-<button type="edit">Edit</button>
-<button type="delete">Delete</button>

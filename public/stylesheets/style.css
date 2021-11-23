@@ -1,54 +1,145 @@
 body {
-  margin: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 10px;
+  font-family: 'Montserrat', sans-serif;  
+  font-size: 17px;
+  background-color: #B3DEE5;
+  margin-bottom: 200px;
+}
+
+.cocktail-image-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cocktail-image {
+  width: 70%;
+  border-radius: 25px;
+}
+
+.cocktail-filter-list {
+  display: flex;
+  flex-direction: column;
+}
+
+
+h1 {
+  color: #31525B;
+  font-family: 'Ultra', serif;
+  font-size: xx-large;
+  font-weight:40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  color: #31525B;
+  font-family: 'Ultra', serif;
+  font-size: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.welcome-page-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-top: 30px;
+}
+
+.welcome-button-style {
+  background-color: #FFA101;
+  font-size: 24px;
+  color: #31525B;
+  border: none;
+  padding: 15px;
+  border-radius: 25px;
 }
 
 .top-navbar{
   width: 100%;
-  background-color: gray;
-  border-top: 24px  solid gray;
-  border-bottom: 24px  solid gray;
+  background-color: #B3DEE5;
   display: flex;
   justify-content: end;
-  margin-bottom: 30px;
 }
-
 #profile-icon{
-  width: 70px;
-  margin-right: 40px;
+  width: 40px;
+
 }
 
-.bottom-navbar{
-  background-color: gray;
+.bottom-navbar {
+  background-color: #31525B;
   position: fixed;
   bottom: 0;
   left: 0;
   display: flex;
   justify-content: center;
-  height: -40px;
+  
   width: 100%;
-  border-top: 24px solid gray;
-  border-bottom: 24px solid gray;
+  border-top: 7px solid #31525B;
+  border-bottom: 7px solid #31525B;
   margin-left: 0;
+}
+
+.logo-welcome-page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-family: 'Ultra', serif;
 }
 
 .nav-links {
   display: flex;
   width: 100%;
   justify-content: space-evenly;
+  align-items: baseline;
 }
 
 .nav-links img {
-  width: 50px;
+  width: 45px;
 }
 
 #cocktail-icon {
-  width: 40px;
+  width: 37px;
 }
 a {
-  color: #00b7ff;
+  color: #31525B;
   text-decoration: none;
 }
 ul {
   list-style-type: none;
 }
+
+.alphabet-container {
+display: flex;
+flex-direction: column;
+color: #31525B;
+font-family: 'Ultra', serif;
+font-size: larger;
+font-weight:100
+}
+
+.image-thumbnail {
+  width: 60px;
+  border-radius: 15px;
+}
+
+/* .flex-outer > li > label,
+.flex-outer li p {
+  flex: 1 0 120px;
+  max-width: 220px;
+
+} */
+
+.flex-outer {
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+}
+
+
