@@ -63,15 +63,11 @@ router.route('/signup')
 //PROFILE 
 router.route("/profile")
 .get((req, res)=>{
-
   if(req.session.loggedInUser){
     const {_id} = req.session.loggedInUser
-
     User.findById(_id)
     .then((user)=>{
-  
       res.render('profile', {user})
-  
     })
   }else{
     res.render("login")
@@ -156,7 +152,6 @@ router.route("/my-cocktails/:id/edit")
   const {id} = req.params
   const {name, alcoholic, glass, ingredients, instructions, owner} = req.body
   
-
     Cocktail.findByIdAndUpdate(id, {name, alcoholic, glass, ingredients, instructions, owner}, {new: true} )
     .then(()=>{
       res.redirect(`/users/my-cocktails/${id}`);
