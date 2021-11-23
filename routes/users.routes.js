@@ -204,38 +204,6 @@ router.get("/my-cocktails", (req,res)=>{
   
 })
 
-
-
-/* 
-router.route("/create-cocktail",)
-.get((req, res)=>{
-  
-  res.render("cocktails/create-form")
-})
-.post(isLoggedIn, multerUploader.single("imgUrl"), (req, res)=>{
-
-    const { name, alcoholic, glass, ingredients, instructions, owner } = req.body
-  
-    Cocktail.create({ name, alcoholic, glass, ingredients, instructions, owner })
-    .then(()=> res.redirect("/users/my-cocktails"))
-    .catch(console.log)
-  }) */
-  
-/*      const { cocktailName, alcoholic, glassType, ingredientsAndMeasures, instructions, owner } = req.body
-     console.log("req.body:", req.body)
-     try {
-       if (!cocktailName || !alcoholic  || !ingredientsAndMeasures || !instructions ) throw new Error("All fields required")
-       const newCocktail = await Cocktail.create({ cocktailName, alcoholic, glassType, ingredientsAndMeasures, instructions, owner })
-       res.redirect("/cocktailDetails")
-     } catch (error) {
-       res.render("cocktails/cocktail-details", { error })
-     } */
-    
-  //  })
-
-     //const {path: imgUrl} = req.file
-
-
   // USERS COCKTAIL-LIST
 
   router.route('/my-cocktails', async (req, res) => {
@@ -252,11 +220,10 @@ router.route("/create-cocktail",)
 
 //favorites
 router.get("/my-favorites", (req,res)=>{
-  //Filter only currently user created cocktails:
 const {_id} = req.session.loggedInUser
-Cocktail.find({favorites: Number})
+Cocktail.find({favorites: String})
 .then((favorites)=>{
-  res.render("users/my-favorites", {favorites})
+  res.render("my-favorites", {favorites})
 })
 .catch(console.log)
 
@@ -271,7 +238,7 @@ router.route('/my-favorites', async (req,res)=>{
   catch(error){
     res.render('cocktails/my-favorites',{error})
   }
-})
+ })
 
 
 // to get fav btn

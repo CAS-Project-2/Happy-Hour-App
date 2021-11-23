@@ -183,19 +183,19 @@ router.get("/:id", (req, res) => {
 
 
 //fav
-router.get("/favorites", (req, res) => {
-  const { favorites } = req.params;
+// router.get("/favorites", (req, res) => {
+//   const { favorites } = req.params;
 
-  cocktailAPI
-    .getBycockteails(favorites)
-    .then((apiResponse) => {
+//   cocktailAPI
+//     .getBycockteails(favorites)
+//     .then((apiResponse) => {
   
-      res.render("cocktails/my-favorites", {
-        cocktails: apiResponse.data.drinks,
-        alcohol,
-      });
-    })
-    .catch(console.log);
-});
+//       res.render("cocktails/my-favorites", {
+//         cocktails: apiResponse.data.drinks,
+//         alcohol,
+//       });
+//     })
+//     .catch(console.log);
+// });
 
 module.exports = router;

@@ -1,0 +1,13 @@
+<h1>Hey, here is a list of your favorite cocktails</h1>
+
+
+<ul>
+
+{{#each cocktails}}
+   <img src="{{imgUrl}}" width="30px" alt="Cocktail Image"> 
+    <li>{{name}}</li>
+ 
+    <a href="/users/my-favorites/{{id}}">See</a>
+
+{{/each}}
+</ul>
