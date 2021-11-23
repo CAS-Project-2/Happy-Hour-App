@@ -181,4 +181,21 @@ router.get("/:id", (req, res) => {
     .catch(console.log);
 });
 
+
+//fav
+router.get("/favorites", (req, res) => {
+  const { favorites } = req.params;
+
+  cocktailAPI
+    .getBycockteails(favorites)
+    .then((apiResponse) => {
+  
+      res.render("cocktails/my-favorites", {
+        cocktails: apiResponse.data.drinks,
+        alcohol,
+      });
+    })
+    .catch(console.log);
+});
+
 module.exports = router;

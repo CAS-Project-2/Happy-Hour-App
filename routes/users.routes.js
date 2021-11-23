@@ -249,6 +249,20 @@ router.route("/create-cocktail",)
     }
 });
 
+
+
+//favorites
+router.get("/my-favorites", (req,res)=>{
+  //Filter only currently user created cocktails:
+const {_id} = req.session.loggedInUser
+Cocktail.find({favorites: Number})
+.then((favorites)=>{
+  res.render("users/my-favorites", {favorites})
+})
+.catch(console.log)
+
+})
+
 // USERS Favorites
 router.route('/my-favorites', async (req,res)=>{
   try{
@@ -256,7 +270,7 @@ router.route('/my-favorites', async (req,res)=>{
     res.render('cocktails/my-favorites', {UserFavorites: listMyFavorites})
   }
   catch(error){
-    res.render('cocktails/my-favorites')
+    res.render('cocktails/my-favorites',{error})
   }
 })
 
