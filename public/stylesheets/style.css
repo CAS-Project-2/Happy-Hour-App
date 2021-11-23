@@ -1,5 +1,5 @@
 body {
-  padding: 20px;
+  padding: 10px;
   font-family: 'Montserrat', sans-serif;  
   font-size: 17px;
   background-color: #B3DEE5;
@@ -49,7 +49,7 @@ h2 {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding-top: 70px;
+  padding-top: 30px;
 }
 
 .welcome-button-style {
@@ -59,6 +59,16 @@ h2 {
   border: none;
   padding: 15px;
   border-radius: 25px;
+}
+
+.top-navbar{
+  width: 100%;
+  background-color: #B3DEE5;
+  display: flex;
+  justify-content: end;
+}
+#profile-icon{
+  width: 40px;
 
 }
 
