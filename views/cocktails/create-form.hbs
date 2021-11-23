@@ -2,17 +2,21 @@
 
 <form action='/cocktail/create-cocktail' method='POST' enctype="multipart/form-data" />
 
+<ul class="flex-outer">
+	<li>
 	<label>Cocktail Name:</label>
 	<input class='input' type='text' name='name' required />
-
+	</li>
+	<li>
 	<label for="Alcoholic">Alcoholic?</label>
 	<select id="Alcoholic" name="Alcoholic?">
 		<option value="Select an option">Select an Option...</option>
 		<option value="Alcoholic">Alcoholic</option>
 		<option value="Non-Alcoholic">Non-Alcoholic</option>
 	</select>
+	</li>
 
-
+	<li>
 	<label for="glasstype">Glass Type:</label>
 	<select id="glasstype" name="Glass Type:">
 		<option value="Select an option">Select an Option...</option>
@@ -37,28 +41,37 @@
 		<option value="Whiskey Glass">Whiskey Glass</option>
 		<option value="Wine glass">Wine Glass</option>	
 	</select>
+	</li>
 
-	</select>
-
+	<li>
 	<textarea name="Ingredients and Measures" rows="10" cols="30">Ingredients and Measures</textarea>
-
+	</li>
+	<li>
 	<textarea name="Instructions" rows="10" cols="30">Instructions</textarea>
-
+	</li>
+	<li>
 	<label class='label'>Owner:</label>
-
+	</li>
+	<li>
 	<select name="owner">
 		<option selected disabled value="">Select a owner..</option>
 		{{#each users}}
 		<option value="{{_id}}">{{ username }}</option>
 		{{/each}}
 	</select>
-
+	</li>
+	<li>
 	<label> Cocktail Image:</label>
-  	<input type="file" name="imgUrl" />		
-
+	</li>
+	<li>
+  	<input type="file" name="imgUrl" />	
+	</li>	
+	<li>
 	<button class='button is-rounded is-danger' type='submit'>Create</button>
-
+	</li>
+	</ul>
 </form>
+
 
 {{#if errorMessage}}
 <p>{{errorMessage}}</p>
