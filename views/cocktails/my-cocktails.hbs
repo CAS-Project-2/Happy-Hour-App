@@ -1,12 +1,14 @@
 <h1>Hey, here is a list of your cocktails</h1>
 
 <ul>
-
+<div class="container-wrapper"></div>
 {{#each cocktails}}
+<div class="cocktail-filter-container"></div>
    <img src="{{imgUrl}}" width="30px" alt="Cocktail Image"> 
     <li>{{name}}</li>
  
     <a href="/users/my-cocktails/{{id}}">See</a>
-
+</div>
 {{/each}}
+</div>
 </ul>
