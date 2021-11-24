@@ -194,7 +194,6 @@ router.get("/community/:id", (req, res) => {
     .then((cocktail) => {
       if (req.session.loggedInUser._id == cocktail.owner) {
         console.log(req.session.loggedInUser._id, cocktail.owner);
-        console.log("hello");
         var showEdit = true;
         var showDelete = true;
       }
