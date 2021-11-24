@@ -103,10 +103,14 @@ router.get('/logout', (req, res) => {
 router.route("/create-cocktail")
     .get(async (req, res)=>{
         try{
-          //Passing the user to establish the relationship
-          const {_id} = req.session.loggedInUser
-          const user = await User.findById(_id)
-          res.render("cocktails/create-form", {user})
+          //Passing the user for stablish the realtionship
+          if( req.session.loggedInUser){
+            const {_id} = req.session.loggedInUser
+            const user = await User.findById(_id)
+            res.render("cocktails/create-form", {user})
+          }else{
+            res.render("login")
+          }
         }catch(error){
           console.log(error)
         }
@@ -197,6 +201,10 @@ router.get("/my-cocktails", (req,res)=>{
   
 })
 
+<<<<<<< HEAD
    module.exports = router;
+=======
+module.exports = router;
+>>>>>>> 22f9b618fc021856a72bbe16c2066c475d914b75
 
   
