@@ -116,53 +116,41 @@ router.get("/logout", (req, res) => {
 
 //CREATE COCKTAIL
 
-router
-  .route("/create-cocktail")
-  .get(async (req, res) => {
-    try {
-      //Passing the user for stablish the realtionship
-      const { _id } = req.session.loggedInUser;
-      const user = await User.findById(_id);
-      res.render("cocktails/create-form", { user });
-    } catch (error) {
-      console.log(error);
-    }
-  })
-  .post(async (req, res) => {
-    try {
-      const {
-        name,
-        alcoholic,
-        glass,
-        ingredients,
-        instructions,
-        owner,
-        imgUrl,
-      } = req.body;
+router.route("/create-cocktail")
+    .get(async (req, res)=>{
+        try{
+          //Passing the user for stablish the realtionship
+          if( req.session.loggedInUser){
+            const {_id} = req.session.loggedInUser
+            const user = await User.findById(_id)
+            res.render("cocktails/create-form", {user})
+          }else{
+            res.render("login")
+          }
+        }catch(error){
+          console.log(error)
+        }
+    })
+    .post(multerUploader.single("imgUrl"),async (req,res)=>{
+        try{
+   
+        const {name, alcoholic, glass, ingredients, instructions, owner}= req.body
+    
+        if(!name || !ingredients || !instructions){
+          res.render("cocktails/create-form", { name, ingredients, instructions, error:{type: "CKTAIL_ERR", msg: "Missing fields"}})
+        }
 
-      if (!name || !ingredients || !instructions) {
-        res.render("cocktails/create-form", {
-          name,
-          ingredients,
-          instructions,
-          error: { type: "CKTAIL_ERR", msg: "Missing fields" },
-        });
-      }
+        const imgUrl = req.file.path
 
-      await Cocktail.create({
-        name,
-        alcoholic,
-        glass,
-        ingredients,
-        instructions,
-        owner,
-        imgUrl,
-      });
-      res.redirect("/users/my-cocktails");
-    } catch (error) {
-      console.log(error);
-    }
-  });
+          await Cocktail.create({name, alcoholic, glass, ingredients, instructions, owner, imgUrl})
+          res.redirect("/users/my-cocktails")
+
+        }catch(error){
+            console.log(error)
+        }
+
+    })
+
 
 //EDIT USER COCKTAIL
 router
