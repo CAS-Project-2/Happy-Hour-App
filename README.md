@@ -36,6 +36,7 @@ In this project we have used:
 - Cloudinary
 - GitHub 
 - InVision (creating wireframes)
+- Heroku
 
 **Challenges and Future Plans**
 
