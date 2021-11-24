@@ -22,10 +22,13 @@ h1 {
   color: #1D1D27;
   font-family: 'Nunito', sans-serif;
   font-size: xx-large;
+  text-align: center;
   font-weight:40px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 0.5em;
+
 }
 
 h2 {
@@ -209,9 +212,7 @@ hr{
   color: white;
 }
 
-.section-title h1{
-  margin: 0;
-}
+
 .cocktail-list-container{
 
   width: 100%;
@@ -266,7 +267,6 @@ hr{
   font-size: 1.2em;
 }
 
-
 .liquor-list-container{
 
   border-radius: 20px;
@@ -293,7 +293,9 @@ hr{
 }
 
 
-
+button #fav-btn {
+  background-color: yellow;
+}
 .flex-outer {
   display: flex;
   flex-direction: column;
