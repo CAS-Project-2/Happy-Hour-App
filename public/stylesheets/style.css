@@ -5,10 +5,19 @@ body {
   padding: 10px;
   font-family: 'Nunito', sans-serif;
   font-size: 17px;
-  background-color: #FFb458;
+  background-color: #cfe4eb;
   margin-bottom: 80px;
 }
+#back-button{
+  position: absolute;
+  top: 25px;
+  font-size: 1.2em;
+  font-weight: bold;
+  font-family: 'Nunito', sans-serif;
+  border:none;
+  background-color: transparent;
 
+}
 h1 {
   color: #1D1D27;
   font-family: 'Nunito', sans-serif;
@@ -78,11 +87,12 @@ ul {
   border: none;
   padding: 10px;
   border-radius: 15px;
-} */
+}  */
 
-/* 
+
  button {
-  margin-top: 200px;
+  margin-top: 190px;
+  
   transition: all .5s ease;
   color: #1D1D27;
   border: 3px solid #ff9101;
@@ -102,12 +112,12 @@ button:hover {
   background-color: #ff9101;
 }
 
- */
+
 
 
 .top-navbar{
   width: 100%;
-  background-color: #FFb458;
+  background-color: #cfe4eb;
   display: flex;
   justify-content: end;
 }
@@ -206,20 +216,95 @@ hr{
 .letter-box a{
   color: white;
 }
+
+.section-title h1{
+  margin: 0;
+}
 .cocktail-list-container{
-  padding-top: 30px;
+
   width: 100%;
-  border: #1D1D27;
-  background-color: #1D1D27;
+  border-radius: 20px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-
-.image-thumbnail {
-  width: 80px;
-  border-radius: 15px;
+.cocktail-list-container hr{
+  border: 1px solid #1D1D27;
+  width: 90%
 }
+
+.cocktail-container{
+  margin: 10px 10px ;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+.cocktaimImg-list {
+  width: 100px;
+  height: 105px;
+  border-radius: 13px;
+  margin-right: 20px ;
+  margin-left: 20px;
+}
+.glass-list-container{
+
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.glass-box{
+  display: flex;
+  justify-content: center;
+  border: 15px solid #1D1D27;
+  width: 70%;
+  height: 20px;
+  border-radius: 10px;
+  background-color: #1D1D27;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 15px;
+}
+.glass-box a{
+  color: white;
+  font-size: 1.2em;
+}
+
+.liquor-list-container{
+
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.liquor-box{
+  display: flex;
+  justify-content: center;
+  border: 15px solid #1D1D27;
+  width: 70%;
+  height: 20px;
+  border-radius: 10px;
+  background-color: #1D1D27;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 15px;
+}
+.liquor-box a{
+  color: white;
+  font-size: 1.2em;
+}
+
+
+
 
 .flex-outer {
   display: flex;
@@ -235,6 +320,3 @@ hr{
   flex-direction: column;
   align-items: flex-start;
 }
-
-
-

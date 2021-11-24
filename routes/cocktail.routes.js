@@ -215,9 +215,9 @@ router.get("/community", (req, res) => {
 router.get("/random", (req, res) => {
   cocktailAPI
     .getRandom()
-    .then((apiResponse) => {
+    .then((cocktail) => {
       res.render("cocktails/random-cocktail", {
-        cocktail: apiResponse.data.drinks[0],
+        cocktail
       });
     })
     .catch(console.log);
@@ -229,9 +229,9 @@ router.get("/:id", (req, res) => {
 
   cocktailAPI
     .getById(id)
-    .then((apiResponse) => {
+    .then((cocktail) => {
       res.render("cocktails/cocktail-details", {
-        cocktail: apiResponse.data.drinks[0],
+        cocktail
       });
     })
     .catch(console.log);
