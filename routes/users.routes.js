@@ -128,7 +128,12 @@ router.route("/create-cocktail")
           res.render("cocktails/create-form", { name, ingredients, instructions, error:{type: "CKTAIL_ERR", msg: "Missing fields"}})
         }
 
-        const imgUrl = req.file.path
+        let imgUrl 
+        if (req.file) {
+          imgUrl = req.file.path
+        } else {
+          imgUrl = "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"
+        }
 
           await Cocktail.create({name, alcoholic, glass, ingredients, instructions, owner, imgUrl})
           res.redirect("/users/my-cocktails")
@@ -206,5 +211,3 @@ router.get("/my-cocktails", (req,res)=>{
 })
 
 module.exports = router;
-
-  
