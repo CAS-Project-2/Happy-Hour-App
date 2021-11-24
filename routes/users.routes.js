@@ -126,8 +126,8 @@ router.route("/create-cocktail")
 
         const imgUrl = req.file.path
 
-        await Cocktail.create({name, alcoholic, glass, ingredients, instructions, owner, imgUrl})
-        res.redirect("/users/my-cocktails" )
+          await Cocktail.create({name, alcoholic, glass, ingredients, instructions, owner, imgUrl})
+          res.redirect("/users/my-cocktails")
 
         }catch(error){
             console.log(error)
