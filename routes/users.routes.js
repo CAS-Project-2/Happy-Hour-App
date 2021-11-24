@@ -238,14 +238,26 @@ router.get("/my-favorites", (req, res) => {
   User.findById(_id)
     .then((user) => {
       Promise.all(
-        user.favorites.map((favId) => cocktailAPI.getById(favId))
+        user.favorites
+      .map((favId) => cocktailAPI.getById(favId))
       ).then((favCocktails) => {
-        console.log("favCocktails", favCocktails);
+        console.log(favCocktails)
         res.render("my-favorites", { favs: favCocktails });
       });
     })
     .catch(console.log);
 });
+
+//Delete favourites
+router.get("/my-favorites/delete/:id", async (req, res) => {
+  try {
+    console.log("Hello")
+    const { _id } = req.session.loggedInUser;
+    const id = req.params.id;
+    let cocktailToDelete = await User.findByIdAndUpdate(_id, {$pull: {favorites : id}}, {new: true})
+      res.redirect("/users/my-favorites")
+  } catch (error){console.log(error)}
+  });
 
 // to get fav btn
 router.get("/add-to-favorites/:id", (req, res) => {
