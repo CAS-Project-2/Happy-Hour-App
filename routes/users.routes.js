@@ -108,9 +108,13 @@ router.route("/create-cocktail")
     .get(async (req, res)=>{
         try{
           //Passing the user for stablish the realtionship
-          const {_id} = req.session.loggedInUser
-          const user = await User.findById(_id)
-          res.render("cocktails/create-form", {user})
+          if( req.session.loggedInUser){
+            const {_id} = req.session.loggedInUser
+            const user = await User.findById(_id)
+            res.render("cocktails/create-form", {user})
+          }else{
+            res.render("login")
+          }
         }catch(error){
           console.log(error)
         }
