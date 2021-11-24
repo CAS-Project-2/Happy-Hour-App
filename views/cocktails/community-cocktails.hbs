@@ -1,12 +1,15 @@
-<h1>Hey, check peoples recipes!</h1>
+<h1>Check out our community cocktails!</h1>
 
+<form>
+ <input id="back-button" type="button" value="Go back!" onclick="history.back()">
+</form>
 
 <ul>
 
-{{#each cocktails}}
-   <img src="{{imgUrl}}" width="30px" alt="Cocktail Image"> 
+  {{#each cocktails}}
+    <img src="{{imgUrl}}" width="30px" alt="Cocktail Image" />
     <li>{{name}}</li>
- 
+
     <a href="/cocktail/community/{{id}}">See</a>
 {{/each}}
 </ul>

@@ -1,7 +1,11 @@
 <h1>{{glass}} cocktails</h1>
 
+<form>
+ <input id="back-button" type="button" value="Go back!" onclick="history.back()">
+</form>
+
 <div class="cocktail-filter-list">
- <ul>
+  <ul>
 
 {{#each glasses}}
     <li class="drink-title">{{this.strDrink}}</li>
@@ -9,6 +13,6 @@
     <a href="/cocktail/{{idDrink}}" class>See</a>
      <a href="/users/add-to-favorites/{{idDrink}}"><button>Add to favorites</button></a> 
 
-{{/each}}
-</ul>
+    {{/each}}
+  </ul>
 </div>

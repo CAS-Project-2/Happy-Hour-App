@@ -1,13 +1,26 @@
+<form>
+ <input id="back-button" type="button" value="Go back!" onclick="history.back()">
+</form>
 
 <ul>
 
     <li>Name: {{cocktail.name}}</li>
+    <br>
     <li>Glass type: {{cocktail.glass}}</li>
+    <br>
     <li>{{cocktail.alcoholic}}</li>
+    <br>
     <li>Ingredients: {{cocktail.ingredients}}</li>
+    <br>
     <li>Instructions: {{cocktail.instructions}}</li>
+    <br>
+    <br>
     <img width="80px" src="{{cocktail.imgUrl}}" alt="Cocktail Image">
-    <a href="/users/my-cocktails/{{cocktail.id}}/edit">edit</a>
+    <br>
+    <br>
+    <a href="/users/my-cocktails/{{cocktail.id}}/edit">Edit</a>
+    <br>
+    <br>
     <a href="/users/my-cocktails/{{cocktail.id}}/delete">Delete</a>
 
 </ul>
