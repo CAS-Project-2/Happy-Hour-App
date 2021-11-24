@@ -78,17 +78,11 @@ ul {
   margin-top: 40px;
 }
 
-/* .welcome-button-style {
-  margin-top: 200px;
-  background-color: #ff9101;
-  font-family: 'Nunito', sans-serif;
-  font-size: 1.2em;
-  color: #1D1D27;
-  border: none;
-  padding: 10px;
-  border-radius: 15px;
-}  */
-
+.refresh-button{
+  position: absolute;
+  top: 20px;
+  
+}
 
  button {
   margin-top: 190px;
@@ -184,14 +178,12 @@ hr{
   background-color: #1D1D27;
   margin: 10px 10px;
   padding: 15px;
-}
-
-.filter-box > a{
   color: white;
   font-size: 1.2em;
   font-weight: bold;
-
 }
+
+
 .alphabet-container {
   display: flex;
   flex-direction: row;
@@ -270,11 +262,10 @@ hr{
   margin-bottom: 10px;
   margin-top: 10px;
   padding: 15px;
-}
-.glass-box a{
   color: white;
   font-size: 1.2em;
 }
+
 
 .liquor-list-container{
 
@@ -297,12 +288,9 @@ hr{
   margin-bottom: 10px;
   margin-top: 10px;
   padding: 15px;
-}
-.liquor-box a{
   color: white;
   font-size: 1.2em;
 }
-
 
 
 

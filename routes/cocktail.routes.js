@@ -127,7 +127,7 @@ router.get("/glasses", (req, res) => {
 // filter by glass
 router.get("/glasses/:glass", (req, res) => {
   const { glass } = req.params;
-  console.log(glass);
+
   cocktailAPI
     .filterByGlass(glass)
     .then((apiResponse) => {
@@ -211,13 +211,13 @@ router.get("/community", (req, res) => {
   });
 });
 
-// get a random cocktail
+//GET RANDOM COCKTAIL
 router.get("/random", (req, res) => {
   cocktailAPI
     .getRandom()
-    .then((cocktail) => {
+    .then((apiResponse) => {
       res.render("cocktails/random-cocktail", {
-        cocktail
+        cocktail: apiResponse.data.drinks[0],
       });
     })
     .catch(console.log);
