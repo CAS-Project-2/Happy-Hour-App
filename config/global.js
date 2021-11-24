@@ -1,17 +1,11 @@
-var express = require('express');
-
-var logger = require('morgan');
-
+var express = require("express");
+var logger = require("morgan");
 const cookieParser = require("cookie-parser");
-
 const favicon = require("serve-favicon");
-
 const path = require("path");
-
-const session = require('express-session');
-const MongoStore = require('connect-mongo');
-
-const hbs = require('hbs')
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
+const hbs = require("hbs");
 
 // Middleware configuration
 module.exports = (app) => {
@@ -28,27 +22,28 @@ module.exports = (app) => {
   // Sets the view engine to handlebars
   app.set("view engine", "hbs");
 
-  hbs.registerPartials(path.join(__dirname, '/views/partials'))
+  hbs.registerPartials(path.join(__dirname, "/views/partials"));
 
   // Handles access to the public folder
   app.use(express.static(path.join(__dirname, "..", "public")));
 
   // Handles access to the favicon
-  app.use(favicon(path.join(__dirname, "..", "public", "images", "favicon.ico")));
+  app.use(
+    favicon(path.join(__dirname, "..", "public", "images", "favicon.ico"))
+  );
 
   app.use(
-		session({
-			secret: 'Globtrotters-secret',
-			resave: false,
-			saveUninitialized: true,
-			cookie: {
-				maxAge: 24 * 60 * 60 * 1000
-			},
-			store: MongoStore.create({
-				mongoUrl: process.env.MONGODB_URI,
-        ttl: 24 * 60 * 60
-			})
-		})
-	);
-
+    session({
+      secret: "Globtrotters-secret",
+      resave: false,
+      saveUninitialized: true,
+      cookie: {
+        maxAge: 24 * 60 * 60 * 1000,
+      },
+      store: MongoStore.create({
+        mongoUrl: process.env.MONGODB_URI,
+        ttl: 24 * 60 * 60,
+      }),
+    })
+  );
 };

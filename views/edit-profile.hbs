@@ -1,14 +1,14 @@
 <h2>Edit profile</h2>
 
-
 <form action="/users/{{user._id}}/edit" method="POST">
   <label for="username">Username: </label>
   <input type="text" name="username" value={{user.username}} />
  
- <label for="favorites">Favorites: </label>
+ 
+
+
+  <label for="favorites">Favorites: </label>
   <input type="text" name="favorites" value={{user.favorites}} />
 
-
-
-  <button type="submit">Edit</button>
+  <button type="submit">Update</button>
 </form>

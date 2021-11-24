@@ -16,9 +16,7 @@ const userSchema = new Schema({
 		required: true,
 		unique: true
 	},
-	favorites: [{ type: Schema.Types.ObjectId, ref: 'Cocktail', default: [] }]
+	favorites: [{ type: String, default: [] }]
 });
 
 module.exports = model('User', userSchema);
-
-

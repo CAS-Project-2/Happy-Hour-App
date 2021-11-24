@@ -1,3 +1,6 @@
+<form>
+ <input type="button" value="Go back!" onclick="history.back()">
+</form>
 
 <ul>
 
@@ -7,7 +10,7 @@
     <li>Ingredients: {{cocktail.ingredients}}</li>
     <li>Instructions: {{cocktail.instructions}}</li>
     <img width="80px" src="{{cocktail.imgUrl}}" alt="Cocktail Image">
-    <a href="/users/my-cocktails/{{cocktail.id}}/edit">Edit</a>
+    <a href="/users/my-cocktails/{{cocktail.id}}/edit">edit</a>
     <a href="/users/my-cocktails/{{cocktail.id}}/delete">Delete</a>
 
 </ul>

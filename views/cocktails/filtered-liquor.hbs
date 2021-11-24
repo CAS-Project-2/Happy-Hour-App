@@ -1,11 +1,17 @@
 <h1> {{alcohol}} </h1>
 
+<form>
+ <input type="button" value="Go back!" onclick="history.back()">
+</form>
+
 <ul>
 
-{{#each cocktails}}
+  {{#each cocktails}}
     <li>{{strDrink}}</li>
-    <img src="{{strDrinkThumb}}" width="40px" alt="Cocktail Image">
+    <img src="{{strDrinkThumb}}" width="40px" alt="Cocktail Image" />
     <a href="/cocktail/{{idDrink}}">See</a>
+   <a href="/users/add-to-favorites/{{idDrink}}"><button>Add to favorites</button></a>
+
 {{/each}}
 </ul>
 
