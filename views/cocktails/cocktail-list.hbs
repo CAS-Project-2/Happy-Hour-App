@@ -6,10 +6,9 @@
 
 <div class="container-wrapper">
 {{#each cocktails}}
-<div class="cocktail-filter-container">
-    <img src="{{strDrinkThumb}}" width="30px" class="image-thumbnail" alt="Cocktail Image">
-    <a href="/cocktail/{{idDrink}}">{{strDrink}}</a>
-     <a href="/users/add-to-favorites/{{idDrink}}"><button>Add to favorites</button></a> 
+<div class="cocktail-container">
+    <a href="/cocktail/{{idDrink}}"><img src="{{strDrinkThumb}}" width="30px" class="image-thumbnail" alt="Cocktail Image"></a>
+    <h3>{{strDrink}}</h3>
  </div>
 {{/each}}
 </div>
