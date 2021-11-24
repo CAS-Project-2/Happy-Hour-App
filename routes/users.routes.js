@@ -234,12 +234,24 @@ router.get("/my-favorites", (req, res) => {
   User.findById(_id)
     .then((user) => {
       Promise.all(user.favorites.map((favId)=> cocktailAPI.getById(favId)))
-      .then(favCocktails=>{
-        console.log("favCocktails", favCocktails)
+    .then(favCocktails=>{
+      
         res.render("my-favorites", { favs: favCocktails });
+        
             })  
     })
     .catch(console.log);
+});
+
+router.get("/my-favorites/delete/:id", async (req, res) => {
+try {
+  console.log("HEY IM INSIDE MYFAVS DELETE ID")
+  const { _id } = req.session.loggedInUser;
+  const id = req.params.id;
+  let cocktailToDelete = await User.findByIdAndUpdate(_id, {$pull: {favorites : id}}, {new: true})
+
+    res.redirect("/users/my-favorites")
+} catch (error){console.log(error)}
 });
 
 

@@ -4,23 +4,27 @@
 
 
 <ul>
-
-     {{#each favs}}
-     
-
+     {{#each favs}} 
      <li class="drink-title">Name: {{this.strDrink}}</li>
 
      <img src="{{strDrinkThumb}}" width="30px" class="image-thumbnail" alt="Cocktail Image">
 
-    <a href="/cocktail/{{this}}">See</a>
+    <a href="/cocktail/{{idDrink}}">See</a>
 
 
+    <a href="/users/my-favorites/delete/{{idDrink}}">Delete</a>
 
-
-    {{/each}}
+    {{/each}} 
  
 
 </ul>
+
  
 
 
+
+
+
+{{!-- {{#if showDelete }}
+        <a href="/cocktail/my-favorites/{{this}}/delete">Delete</a>
+    {{/if}} --}}
