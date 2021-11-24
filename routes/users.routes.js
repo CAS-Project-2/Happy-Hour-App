@@ -25,7 +25,7 @@ router.route('/signup')
 
     const user = await User.findOne({email})
     if(user){
-      res.render("signup", { username, email, error:{type: "USR_ERR", msg: "Email exists"}})
+      res.render("signup", { username, email, error:{type: "USR_ERR", msg: "This email address is already registered"}})
     }
 
     const salt = bcrypt.genSaltSync(5)
@@ -43,10 +43,10 @@ router.route('/signup')
   })
 .post( async (req, res)=>{
     const {username, password} = req.body
-    if(!username || !password){res.render("login", {error:{type: "CRED_ERR", msg: "Missing credentials"}})}
+    if(!username || !password){res.render("login", {error:{type: "CRED_ERR", msg: "Some credientials are missing"}})}
 
     const loggedInUser = await User.findOne({username})
-    if(!loggedInUser) {res.render("signup", {error:{type: "USR_ERR", msg: "User does not exist"}})}
+    if(!loggedInUser) {res.render("signup", {error:{type: "USR_ERR", msg: "Username does not exist"}})}
     
     const pwsIsCorrect = bcrypt.compareSync(password, loggedInUser.password)
 
@@ -55,10 +55,9 @@ router.route('/signup')
       res.redirect("/")
       
     }else{
-      res.render(res.render("login", {error:{type: "PWD_ERR", msg: "Password incorrect"}}))
+      res.render(res.render("login", {error:{type: "PWD_ERR", msg: "Your password is incorrect"}}))
     }
 }) 
-
 
 //PROFILE 
 router.route("/profile")
@@ -72,7 +71,6 @@ router.route("/profile")
   }else{
     res.render("login")
   }
- 
 })
 
 
@@ -83,7 +81,6 @@ router.route("/:id/edit")
     User.findById(_id)
     .then((user)=>{
       res.render('edit-profile', {user})
-  
     })
   })
  .post((req, res)=>{
@@ -103,11 +100,10 @@ router.get('/logout', (req, res) => {
 
 
 //CREATE COCKTAIL
-
 router.route("/create-cocktail")
     .get(async (req, res)=>{
         try{
-          //Passing the user for stablish the realtionship
+          //Passing the user to establish the relationship
           const {_id} = req.session.loggedInUser
           const user = await User.findById(_id)
           res.render("cocktails/create-form", {user})
@@ -121,7 +117,7 @@ router.route("/create-cocktail")
         const {name, alcoholic, glass, ingredients, instructions, owner}= req.body
     
         if(!name || !ingredients || !instructions){
-          res.render("cocktails/create-form", { name, ingredients, instructions, error:{type: "CKTAIL_ERR", msg: "Missing fields"}})
+          res.render("cocktails/create-form", { name, ingredients, instructions, error:{type: "CKTAIL_ERR", msg: "Complete all fields"}})
         }
 
         const imgUrl = req.file.path
@@ -132,7 +128,7 @@ router.route("/create-cocktail")
         }catch(error){
             console.log(error)
         }
-
+        
     })
 
 
@@ -172,8 +168,8 @@ router.get('/my-cocktails/:id/delete', (req, res) => {
   .then(()=>{
     res.redirect("/users/my-cocktails");
   })
-
 });
+
 
 //VIEW USER COCKTAIL DETAILS
 router.get("/my-cocktails/:id", (req,res)=>{
@@ -200,49 +196,6 @@ router.get("/my-cocktails", (req,res)=>{
   .catch(console.log)
   
 })
-
-
-/* 
-router.route("/create-cocktail",)
-.get((req, res)=>{
-  
-  res.render("cocktails/create-form")
-})
-.post(isLoggedIn, multerUploader.single("imgUrl"), (req, res)=>{
-
-    const { name, alcoholic, glass, ingredients, instructions, owner } = req.body
-  
-    Cocktail.create({ name, alcoholic, glass, ingredients, instructions, owner })
-    .then(()=> res.redirect("/users/my-cocktails"))
-    .catch(console.log)
-  }) */
-  
-/*      const { cocktailName, alcoholic, glassType, ingredientsAndMeasures, instructions, owner } = req.body
-     console.log("req.body:", req.body)
-     try {
-       if (!cocktailName || !alcoholic  || !ingredientsAndMeasures || !instructions ) throw new Error("All fields required")
-       const newCocktail = await Cocktail.create({ cocktailName, alcoholic, glassType, ingredientsAndMeasures, instructions, owner })
-       res.redirect("/cocktailDetails")
-     } catch (error) {
-       res.render("cocktails/cocktail-details", { error })
-     } */
-    
-  //  })
-
-     //const {path: imgUrl} = req.file
-
-
-  // USERS COCKTAIL-LIST
-
-  router.route('/my-cocktails', async (req, res) => {
-    try {
-        listUserCocktails = await UserCocktails.find()
-        res.render('cocktails/my-cocktails', { UserCocktails: listUserCocktails});
-    }
-    catch (error) {
-        res.render('cocktails/my-cocktails', {error});
-    }
-});
 
    module.exports = router;
 
