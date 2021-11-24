@@ -108,9 +108,13 @@ router.route("/create-cocktail")
     .get(async (req, res)=>{
         try{
           //Passing the user for stablish the realtionship
-          const {_id} = req.session.loggedInUser
-          const user = await User.findById(_id)
-          res.render("cocktails/create-form", {user})
+          if( req.session.loggedInUser){
+            const {_id} = req.session.loggedInUser
+            const user = await User.findById(_id)
+            res.render("cocktails/create-form", {user})
+          }else{
+            res.render("login")
+          }
         }catch(error){
           console.log(error)
         }
@@ -201,49 +205,6 @@ router.get("/my-cocktails", (req,res)=>{
   
 })
 
-
-/* 
-router.route("/create-cocktail",)
-.get((req, res)=>{
-  
-  res.render("cocktails/create-form")
-})
-.post(isLoggedIn, multerUploader.single("imgUrl"), (req, res)=>{
-
-    const { name, alcoholic, glass, ingredients, instructions, owner } = req.body
-  
-    Cocktail.create({ name, alcoholic, glass, ingredients, instructions, owner })
-    .then(()=> res.redirect("/users/my-cocktails"))
-    .catch(console.log)
-  }) */
-  
-/*      const { cocktailName, alcoholic, glassType, ingredientsAndMeasures, instructions, owner } = req.body
-     console.log("req.body:", req.body)
-     try {
-       if (!cocktailName || !alcoholic  || !ingredientsAndMeasures || !instructions ) throw new Error("All fields required")
-       const newCocktail = await Cocktail.create({ cocktailName, alcoholic, glassType, ingredientsAndMeasures, instructions, owner })
-       res.redirect("/cocktailDetails")
-     } catch (error) {
-       res.render("cocktails/cocktail-details", { error })
-     } */
-    
-  //  })
-
-     //const {path: imgUrl} = req.file
-
-
-  // USERS COCKTAIL-LIST
-
-  router.route('/my-cocktails', async (req, res) => {
-    try {
-        listUserCocktails = await UserCocktails.find()
-        res.render('cocktails/my-cocktails', { UserCocktails: listUserCocktails});
-    }
-    catch (error) {
-        res.render('cocktails/my-cocktails', {error});
-    }
-});
-
-   module.exports = router;
+module.exports = router;
 
   
