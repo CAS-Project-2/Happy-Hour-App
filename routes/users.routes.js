@@ -201,10 +201,6 @@ router.get("/my-cocktails", (req,res)=>{
   
 })
 
-<<<<<<< HEAD
-   module.exports = router;
-=======
 module.exports = router;
->>>>>>> 22f9b618fc021856a72bbe16c2066c475d914b75
 
   
