@@ -1,71 +1,72 @@
 <h1>Add a cocktail</h1>
 <ul class="flex-outer">
-<form action='/users/create-cocktail' method='POST' enctype="multipart/form-data"/>
-<li>
-	<label for="name">Cocktail Name:</label>
-	<input class='input' type='text' name='name' required/>
-</li>
-<br>
-<li>
-	<label for="alcoholic">Alcoholic?</label>
-	<select id="alcoholic" name="alcoholic" required>
-		<option selected disabled value="" >Select an Option...</option>
-		<option value="Alcoholic">Alcoholic</option>
-		<option value="Non alcoholic" >Non Alcoholic</option>
-	</select>
+	<form action='/users/create-cocktail' method='POST' enctype="multipart/form-data" />
+	<li>
+		<label for="name">Cocktail Name:</label>
+		<input class='input' type='text' name='name' required />
 	</li>
-<br>
-<li>
-	<label for="glass">Glass Type:</label>
-	<select id="glass" name="glass">
-		<option selected disabled value="Select an option">Select an Option...</option>
-		<option value="Brandy snifter">Brandy Snifter</option>
-		<option value="Champagne flute">Champagne Flute</option>
-		<option value="Cocktail glass">Cocktail Glass</option>
-		<option value="Coffee mug">Coffee Mug</option>
-		<option value="Collins Glass">Collins Glass</option>
-		<option value="Copper Mug">Copper Mug</option>
-		<option value="Coupe Glass">Coupe Glass</option>
-		<option value="Highball glass">Highball Glass</option>
-		<option value="Hurricane glass">Hurricane Glass</option>
-		<option value="Jar">Jar</option>
-		<option value="Mason jar">Mason Jar</option>
-		<option value="Margarita Glass">Margarita Glass</option>
-		<option value="Martini Glass">Martini Glass</option>
-		<option value="Old-fashioned glass">Old-Fashioned Glass</option>
-		<option value="Pint glass">Pint Glass</option>
-		<option value="Pitcher">Pitcher</option>
-		<option value="Punch bowl">Punch Bowl</option>
-		<option value="Shot glass">Shot Glass</option>
-		<option value="Whiskey Glass">Whiskey Glass</option>
-		<option value="Wine glass">Wine Glass</option>	
-	</select>
+	<br>
+	<li>
+		<label for="alcoholic">Alcoholic?</label>
+		<select id="alcoholic" name="alcoholic" required>
+			<option selected disabled value="">Select an Option...</option>
+			<option value="Alcoholic">Alcoholic</option>
+			<option value="Non alcoholic">Non Alcoholic</option>
+		</select>
 	</li>
-<br>
-	</select>
-<li>
-	<textarea name="ingredients" rows="7" cols="30" placeholder="Ingredients and Measures"></textarea>
-</li>
-<br>
-<li>
-	<textarea name="instructions" rows="7" cols="30" placeholder="Instructions"></textarea>
-</li>
-<li>
-	<label for="owner"></label>
-	<input hidden class='input' type='text' name='owner' data-owner-name= "{{user.username}}" value="{{ user._id }}" readonly />
-</li>
-<br>
-<li>
-	<label> Cocktail Image:</label>
-</li>
-<li>
-  	<input type="file" name="imgUrl"/>
-</li>
-<br>
- <li>
-	<button class='button is-rounded is-danger' type='submit'>Create</button>
+	<br>
+	<li>
+		<label for="glass">Glass Type:</label>
+		<select id="glass" name="glass">
+			<option selected disabled value="Select an option">Select an Option...</option>
+			<option value="Brandy snifter">Brandy Snifter</option>
+			<option value="Champagne flute">Champagne Flute</option>
+			<option value="Cocktail glass">Cocktail Glass</option>
+			<option value="Coffee mug">Coffee Mug</option>
+			<option value="Collins Glass">Collins Glass</option>
+			<option value="Copper Mug">Copper Mug</option>
+			<option value="Coupe Glass">Coupe Glass</option>
+			<option value="Highball glass">Highball Glass</option>
+			<option value="Hurricane glass">Hurricane Glass</option>
+			<option value="Jar">Jar</option>
+			<option value="Mason jar">Mason Jar</option>
+			<option value="Margarita Glass">Margarita Glass</option>
+			<option value="Martini Glass">Martini Glass</option>
+			<option value="Old-fashioned glass">Old-Fashioned Glass</option>
+			<option value="Pint glass">Pint Glass</option>
+			<option value="Pitcher">Pitcher</option>
+			<option value="Punch bowl">Punch Bowl</option>
+			<option value="Shot glass">Shot Glass</option>
+			<option value="Whiskey Glass">Whiskey Glass</option>
+			<option value="Wine glass">Wine Glass</option>
+		</select>
 	</li>
-	</ul>
+	<br>
+	</select>
+	<li>
+		<textarea name="ingredients" rows="7" cols="30" placeholder="Ingredients and Measures"></textarea>
+	</li>
+	<br>
+	<li>
+		<textarea name="instructions" rows="7" cols="30" placeholder="Instructions"></textarea>
+	</li>
+	<li>
+		<label for="owner"></label>
+		<input hidden class='input' type='text' name='owner' data-owner-name="{{user.username}}" value="{{ user._id }}"
+			readonly />
+	</li>
+	<br>
+	<li>
+		<label> Cocktail Image:</label>
+	</li>
+	<li>
+		<input type="file" name="imgUrl" />
+	</li>
+	<br>
+	<li>
+		<button class='button is-rounded is-danger' type='submit'>Create</button>
+	</li>
+</ul>
 </form>
 
 

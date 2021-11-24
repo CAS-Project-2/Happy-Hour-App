@@ -1,13 +1,15 @@
 <h1>Cocktails</h1>
 
 <div class="container-wrapper">
-{{#each cocktails}}
-<div class="cocktail-filter-container">
-    {{!-- <li>{{strDrink}}</li> --}}
-    <img src="{{strDrinkThumb}}" width="30px" class="image-thumbnail" alt="Cocktail Image">
-    <a href="/cocktail/{{idDrink}}">{{strDrink}}</a>
- </div>
-{{/each}}
+  {{#each cocktails}}
+    <div class="cocktail-filter-container">
+      <img
+        src="{{strDrinkThumb}}"
+        width="30px"
+        class="image-thumbnail"
+        alt="Cocktail Image"
+      />
+      <a href="/cocktail/{{idDrink}}">{{strDrink}}</a>
+    </div>
+  {{/each}}
 </div>
-
-

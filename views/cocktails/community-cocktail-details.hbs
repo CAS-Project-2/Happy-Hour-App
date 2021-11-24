@@ -1,18 +1,17 @@
 <ul>
 
-    <li>Name: {{cocktail.name}}</li>
-    <li>Glass type: {{cocktail.glass}}</li>
-    <li>{{cocktail.alcoholic}}</li>
-    <li>Ingredients: {{cocktail.ingredients}}</li>
-    <li>Instructions: {{cocktail.instructions}}</li>
-    <img width="80px" src="{{cocktail.imgUrl}}" alt="Cocktail Image">
-    
-    {{#if showEdit }}
-        <a href="/cocktail/community/{{cocktail.id}}/edit">Edit</a>
-    {{/if}}
-    
-    {{#if showDelete }}
-        <a href="/cocktail/community/{{cocktail.id}}/delete">Delete</a>
-    {{/if}}
-</ul>
+  <li>Name: {{cocktail.name}}</li>
+  <li>Glass type: {{cocktail.glass}}</li>
+  <li>{{cocktail.alcoholic}}</li>
+  <li>Ingredients: {{cocktail.ingredients}}</li>
+  <li>Instructions: {{cocktail.instructions}}</li>
+  <img width="80px" src="{{cocktail.imgUrl}}" alt="Cocktail Image" />
 
+  {{#if showEdit}}
+    <a href="/cocktail/community/{{cocktail.id}}/edit">Edit</a>
+  {{/if}}
+
+  {{#if showDelete}}
+    <a href="/cocktail/community/{{cocktail.id}}/delete">Delete</a>
+  {{/if}}
+</ul>
