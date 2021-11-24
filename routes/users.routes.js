@@ -116,41 +116,58 @@ router.get("/logout", (req, res) => {
 
 //CREATE COCKTAIL
 
-router.route("/create-cocktail")
-    .get(async (req, res)=>{
-        try{
-          //Passing the user for stablish the realtionship
-          if( req.session.loggedInUser){
-            const {_id} = req.session.loggedInUser
-            const user = await User.findById(_id)
-            res.render("cocktails/create-form", {user})
-          }else{
-            res.render("login")
-          }
-        }catch(error){
-          console.log(error)
-        }
-    })
-    .post(multerUploader.single("imgUrl"),async (req,res)=>{
-        try{
-   
-        const {name, alcoholic, glass, ingredients, instructions, owner}= req.body
-    
-        if(!name || !ingredients || !instructions){
-          res.render("cocktails/create-form", { name, ingredients, instructions, error:{type: "CKTAIL_ERR", msg: "Missing fields"}})
-        }
+router
+  .route("/create-cocktail")
+  .get(async (req, res) => {
+    try {
+      //Passing the user for stablish the realtionship
+      if (req.session.loggedInUser) {
+        const { _id } = req.session.loggedInUser;
+        const user = await User.findById(_id);
+        res.render("cocktails/create-form", { user });
+      } else {
+        res.render("login");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  })
+  .post(multerUploader.single("imgUrl"), async (req, res) => {
+    try {
+      const { name, alcoholic, glass, ingredients, instructions, owner } =
+        req.body;
 
-        const imgUrl = req.file.path
+      if (!name || !ingredients || !instructions) {
+        res.render("cocktails/create-form", {
+          name,
+          ingredients,
+          instructions,
+          error: { type: "CKTAIL_ERR", msg: "Missing fields" },
+        });
+      }
 
-          await Cocktail.create({name, alcoholic, glass, ingredients, instructions, owner, imgUrl})
-          res.redirect("/users/my-cocktails")
+      let imgUrl;
+      if (req.file) {
+        imgUrl = req.file.path;
+      } else {
+        imgUrl =
+          "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg";
+      }
 
-        }catch(error){
-            console.log(error)
-        }
-
-    })
-
+      await Cocktail.create({
+        name,
+        alcoholic,
+        glass,
+        ingredients,
+        instructions,
+        owner,
+        imgUrl,
+      });
+      res.redirect("/users/my-cocktails");
+    } catch (error) {
+      console.log(error);
+    }
+  });
 
 //EDIT USER COCKTAIL
 router
@@ -215,21 +232,20 @@ router.get("/my-cocktails", (req, res) => {
     .catch(console.log);
 });
 
-
 //favorites
 router.get("/my-favorites", (req, res) => {
   const { _id } = req.session.loggedInUser;
   User.findById(_id)
     .then((user) => {
-      Promise.all(user.favorites.map((favId)=> cocktailAPI.getById(favId)))
-      .then(favCocktails=>{
-        console.log("favCocktails", favCocktails)
+      Promise.all(
+        user.favorites.map((favId) => cocktailAPI.getById(favId))
+      ).then((favCocktails) => {
+        console.log("favCocktails", favCocktails);
         res.render("my-favorites", { favs: favCocktails });
-            })  
+      });
     })
     .catch(console.log);
 });
-
 
 // to get fav btn
 router.get("/add-to-favorites/:id", (req, res) => {
