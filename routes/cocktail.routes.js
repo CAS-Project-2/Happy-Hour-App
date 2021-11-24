@@ -129,7 +129,7 @@ router.get("/glasses", (req,res)=>{
 
 router.get("/glasses/:glass", (req, res) => {
   const { glass } = req.params;
-
+console.log(glass)
   cocktailAPI
     .filterByGlass(glass)
     .then((apiResponse) => {
@@ -176,10 +176,9 @@ router.route("/community/:id/edit")
 })
 .post((req, res) => {
 
-  const {id} = req.params
-  const {name, alcoholic, glass, ingredients, instructions, owner} = req.body
+    const {id} = req.params
+    const {name, alcoholic, glass, ingredients, instructions, owner} = req.body
   
-
     Cocktail.findByIdAndUpdate(id, {name, alcoholic, glass, ingredients, instructions, owner}, {new: true} )
     .then(()=>{
       res.redirect(`/cocktail/community`);
