@@ -128,6 +128,7 @@ color: #31525B;
 font-family: 'Prata', serif;
 font-size: larger;
 font-weight:100
+}
 
 /* word-spacing: 50px;
 width: 100%;
@@ -140,8 +141,9 @@ justify-content: space-evenly;
 font-family: 'Abril Fatface', cursive;
 font-size: 30px;
 flex-direction: column;
-align-items: center; */
-}
+align-items: center; }
+*/
+
 
 .image-thumbnail {
   width: 60px;
