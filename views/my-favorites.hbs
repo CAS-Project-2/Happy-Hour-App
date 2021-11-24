@@ -1,15 +1,26 @@
 <h1>Hey, here is a list of your favorite cocktails</h1>
 
 
+
+
 <ul>
 
-      
+     {{#each favs}}
+     
 
-    <a href="/users/my-favorites/{{idDrink}}">here</a>
-    
-    <li>{{name}}</li>
-    <label for="favorites">Favorites: </label>
+     <li class="drink-title">Name: {{this.strDrink}}</li>
+
+     <img src="{{strDrinkThumb}}" width="30px" class="image-thumbnail" alt="Cocktail Image">
+
+    <a href="/cocktail/{{this}}">See</a>
+
+
+
+
+    {{/each}}
+ 
+
+</ul>
  
 
 
-</ul>
