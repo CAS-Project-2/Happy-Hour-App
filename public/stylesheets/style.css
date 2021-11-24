@@ -207,11 +207,8 @@ hr{
   background-color: #1D1D27;
   margin: 10px 10px;
   padding: 15px;
-}
-.letter-box a{
   color: white;
 }
-
 
 .cocktail-list-container{
 
@@ -262,6 +259,7 @@ hr{
   background-color: #1D1D27;
   margin-bottom: 10px;
   margin-top: 10px;
+  text-align: center;
   padding: 15px;
   color: white;
   font-size: 1.2em;
@@ -285,11 +283,60 @@ hr{
   height: 20px;
   border-radius: 10px;
   background-color: #1D1D27;
+  text-align: center;
   margin-bottom: 10px;
   margin-top: 10px;
   padding: 15px;
   color: white;
   font-size: 1.2em;
+}
+
+.rums-container, .whiskies-container, .coffees-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1em;
+  font-weight:bold
+}
+.rum-box, .whisky-box, .coffee-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 15px solid #1D1D27;
+  width: 35px;
+  height: 20px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #1D1D27;
+  margin: 10px 10px;
+  padding: 15px;
+  color: white;
+}
+
+.fruities-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1em;
+  font-weight:bold
+}
+.fruity-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 15px solid #1D1D27;
+  width: 65px;
+  height: 20px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #1D1D27;
+  margin: 10px 10px;
+  padding: 15px;
+  color: white;
 }
 
 

@@ -6,11 +6,11 @@
  
   <img width="80px" src="{{cocktail.imgUrl}}" alt="Cocktail Image"    class="cocktail-image" />
 
-  <li> Name: {{cocktail.name}}</li>
-  <li>Glass type: {{cocktail.glass}}</li>
-  <li>{{cocktail.alcoholic}}</li>
-  <li>Ingredients: {{cocktail.ingredients}}</li>
-  <li>Instructions: {{cocktail.instructions}}</li>
+  <li> <strong>Name:</strong>  {{cocktail.name}}</li>
+  <li> <strong>Glass type: </strong> {{cocktail.glass}}</li>
+  <li> <strong>{{cocktail.alcoholic}}!</strong> </li>
+  <li><strong>Ingredients:</strong>  {{cocktail.ingredients}}</li>
+  <li> <strong>Instructions:</strong>  {{cocktail.instructions}}</li>
 
   {{#if showEdit}}
     <a href="/cocktail/community/{{cocktail.id}}/edit">Edit</a>
