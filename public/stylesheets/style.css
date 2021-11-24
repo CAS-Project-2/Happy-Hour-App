@@ -5,7 +5,7 @@ body {
   padding: 10px;
   font-family: 'Nunito', sans-serif;
   font-size: 17px;
-  background-color: #FFb458;
+  background-color: #cfe4eb;
   margin-bottom: 80px;
 }
 #back-button{
@@ -117,7 +117,7 @@ button:hover {
 
 .top-navbar{
   width: 100%;
-  background-color: #FFb458;
+  background-color: #cfe4eb;
   display: flex;
   justify-content: end;
 }
@@ -249,6 +249,37 @@ hr{
   margin-right: 20px ;
   margin-left: 20px;
 }
+.glass-list-container{
+
+
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.glass-box{
+  display: flex;
+  justify-content: center;
+  border: 15px solid #1D1D27;
+  width: 70%;
+  height: 20px;
+  border-radius: 10px;
+  background-color: #1D1D27;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 15px;
+}
+.glass-box a{
+  color: white;
+  font-size: 1.2em;
+}
+
+
+
 
 .flex-outer {
   display: flex;
