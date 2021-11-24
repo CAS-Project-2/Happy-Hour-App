@@ -78,11 +78,12 @@ ul {
   border: none;
   padding: 10px;
   border-radius: 15px;
-} */
+}  */
 
-/* 
+
  button {
-  margin-top: 200px;
+  margin-top: 190px;
+  
   transition: all .5s ease;
   color: #1D1D27;
   border: 3px solid #ff9101;
@@ -102,7 +103,7 @@ button:hover {
   background-color: #ff9101;
 }
 
- */
+
 
 
 .top-navbar{
@@ -235,5 +236,3 @@ hr{
   flex-direction: column;
   align-items: flex-start;
 }
-
-
