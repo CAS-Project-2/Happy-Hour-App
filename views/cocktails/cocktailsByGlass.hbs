@@ -3,15 +3,11 @@
 <div class="cocktail-filter-list">
   <ul>
 
-    {{#each glasses}}
-      <li class="drink-title">{{this.strDrink}}</li>
-      <img
-        src="{{strDrinkThumb}}"
-        width="50px"
-        class="image-thumbnail"
-        alt="Cocktail Image"
-      />
-      <a href="/cocktail/{{idDrink}}" class>See</a>
+{{#each glasses}}
+    <li class="drink-title">{{this.strDrink}}</li>
+    <img src="{{strDrinkThumb}}" width="50px" class="image-thumbnail" alt="Cocktail Image">
+    <a href="/cocktail/{{idDrink}}" class>See</a>
+     <a href="/users/add-to-favorites/{{idDrink}}"><button>Add to favorites</button></a> 
 
     {{/each}}
   </ul>

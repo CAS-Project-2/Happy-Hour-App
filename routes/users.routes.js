@@ -1,14 +1,16 @@
 var express = require("express");
 var router = express.Router();
 const bcrypt = require("bcrypt");
+const cocktailAPI = require("../apis/api");
 
 // to get user model
 const User = require("../models/User.model");
 const Cocktail = require("../models/Cocktail.model");
 const isLoggedIn = require("./../middleware/isLoggedIn");
+
 const multerUploader = require("../middleware/multerUploader");
 
-// routes for signup and register
+// routes for signup or register
 router
   .route("/signup")
   .get((req, res) => {
@@ -40,7 +42,7 @@ router
     res.redirect("/");
   });
 
-// route for login
+//LOGIN
 router
   .route("/login")
   .get((req, res, next) => {
@@ -75,7 +77,7 @@ router
     }
   });
 
-// route to profile
+//PROFILE
 router.route("/profile").get((req, res) => {
   if (req.session.loggedInUser) {
     const { _id } = req.session.loggedInUser;
@@ -87,7 +89,7 @@ router.route("/profile").get((req, res) => {
   }
 });
 
-// route to edit user
+//EDIT USER
 router
   .route("/:id/edit")
   .get((req, res) => {
@@ -104,7 +106,7 @@ router
     );
   });
 
-// route to logout
+//LOGOUT
 router.get("/logout", (req, res) => {
   req.session.destroy((err) => {
     if (err) res.redirect("/");
@@ -112,61 +114,45 @@ router.get("/logout", (req, res) => {
   });
 });
 
-// route to create cocktail
-router
-  .route("/create-cocktail")
-  .get(async (req, res) => {
-    try {
-      //Passing the user for stablish the realtionship
-      if (req.session.loggedInUser) {
-        const { _id } = req.session.loggedInUser;
-        const user = await User.findById(_id);
-        res.render("cocktails/create-form", { user });
-      } else {
-        res.render("login");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  })
-  .post(multerUploader.single("imgUrl"), async (req, res) => {
-    try {
-      const { name, alcoholic, glass, ingredients, instructions, owner } =
-        req.body;
+//CREATE COCKTAIL
 
-      if (!name || !ingredients || !instructions) {
-        res.render("cocktails/create-form", {
-          name,
-          ingredients,
-          instructions,
-          error: { type: "CKTAIL_ERR", msg: "Missing fields" },
-        });
-      }
+router.route("/create-cocktail")
+    .get(async (req, res)=>{
+        try{
+          //Passing the user for stablish the realtionship
+          if( req.session.loggedInUser){
+            const {_id} = req.session.loggedInUser
+            const user = await User.findById(_id)
+            res.render("cocktails/create-form", {user})
+          }else{
+            res.render("login")
+          }
+        }catch(error){
+          console.log(error)
+        }
+    })
+    .post(multerUploader.single("imgUrl"),async (req,res)=>{
+        try{
+   
+        const {name, alcoholic, glass, ingredients, instructions, owner}= req.body
+    
+        if(!name || !ingredients || !instructions){
+          res.render("cocktails/create-form", { name, ingredients, instructions, error:{type: "CKTAIL_ERR", msg: "Missing fields"}})
+        }
 
-      let imgUrl;
-      if (req.file) {
-        imgUrl = req.file.path;
-      } else {
-        imgUrl =
-          "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg";
-      }
+        const imgUrl = req.file.path
 
-      await Cocktail.create({
-        name,
-        alcoholic,
-        glass,
-        ingredients,
-        instructions,
-        owner,
-        imgUrl,
-      });
-      res.redirect("/users/my-cocktails");
-    } catch (error) {
-      console.log(error);
-    }
-  });
+          await Cocktail.create({name, alcoholic, glass, ingredients, instructions, owner, imgUrl})
+          res.redirect("/users/my-cocktails")
 
-// route to edit user profile
+        }catch(error){
+            console.log(error)
+        }
+
+    })
+
+
+//EDIT USER COCKTAIL
 router
   .route("/my-cocktails/:id/edit")
   .get((req, res) => {
@@ -198,7 +184,7 @@ router
       });
   });
 
-// route to delete cocktail
+//DELETE COCKTAIL
 router.get("/my-cocktails/:id/delete", (req, res) => {
   const { id } = req.params;
 
@@ -207,7 +193,7 @@ router.get("/my-cocktails/:id/delete", (req, res) => {
   });
 });
 
-// route to view user cocktail details
+//VIEW USER COCKTAIL DETAILS
 router.get("/my-cocktails/:id", (req, res) => {
   const { id } = req.params;
   Cocktail.findById(id)
@@ -218,13 +204,41 @@ router.get("/my-cocktails/:id", (req, res) => {
     .catch(console.log);
 });
 
-// route to add a new cocktail to the DB
+//NEW COCKTAIL ROUTE TO DB
 router.get("/my-cocktails", (req, res) => {
   //Filter only currently user created cocktails:
   const { _id } = req.session.loggedInUser;
   Cocktail.find({ owner: _id })
     .then((cocktails) => {
       res.render("cocktails/my-cocktails", { cocktails });
+    })
+    .catch(console.log);
+});
+
+
+//favorites
+router.get("/my-favorites", (req, res) => {
+  const { _id } = req.session.loggedInUser;
+  User.findById(_id)
+    .then((user) => {
+      Promise.all(user.favorites.map((favId)=> cocktailAPI.getById(favId)))
+      .then(favCocktails=>{
+        console.log("favCocktails", favCocktails)
+        res.render("my-favorites", { favs: favCocktails });
+            })  
+    })
+    .catch(console.log);
+});
+
+
+// to get fav btn
+router.get("/add-to-favorites/:id", (req, res) => {
+  let userId = req.session.loggedInUser._id;
+
+  let cocktailId = req.params.id;
+  User.findByIdAndUpdate(userId, { $push: { favorites: cocktailId } })
+    .then(() => {
+      res.redirect("/users/profile");
     })
     .catch(console.log);
 });

@@ -5,9 +5,11 @@
 <h3>Email Address: {{user.email}}</h3>
 <br />
 <h3><a href="/users/my-cocktails">My cocktails</a></h3>
-<br />
-<a href="/users/{{user._id}}/edit"><button type="submit">Edit profile</button></a>
-<br />
+<br>
+ <h2><a href="/users/my-favorites/">My Favorites</a></h2>
+<br> 
+<a href ="/users/{{user._id}}/edit"><button type="submit">Edit profile</button></a>
+<br>
 <form action="/users/logout" method="GET">
   <br />
   <button type="submit">Logout</button>
