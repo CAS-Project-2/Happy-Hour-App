@@ -33,7 +33,7 @@ h1 {
 }
 
 h2 {
-  color: #5AA897;
+  color: #343F56;
   font-family: 'Nunito', sans-serif;
   font-size: 35px;
   display: flex;
@@ -423,21 +423,21 @@ hr{
 }
 
 .user-buttons a{
-  background-color:#E9896A;
-  border: 15px solid #E9896A;
+  background-color:#5AA897;
+  border: 15px solid #5AA897;
   border-radius: 4px;
   margin: 10px;
   font-size: 1.2em;
-  color: #1D1D27;
+  color: #F8F5F1;
 }
 .session-buttons a{
   border-radius: 4px;
   text-align: center;
   margin: 10px;
   font-size: 1.2em;
-  color: #1D1D27;
-  background-color: #5AA897 ;
-  border: 15px solid #5AA897;
+  color: #F8F5F1;
+  background-color: #343F56 ;
+  border: 15px solid #343F56;
   
 }
 .profile-info p{
@@ -445,6 +445,7 @@ hr{
   border: 15px solid #E9896A ;
   border-radius: 4px;
   font-size: 1.2em;
+  color: #F8F5F1;
 
 }
 .profile-info h3{
@@ -465,13 +466,13 @@ hr{
   margin: 10px;
   font-size: 1.2em;
   color: #1D1D27;
-  background-color: #E9896A;
-  border: 15px solid #E9896A;
+  background-color: #343F56;
+  border: 15px solid #343F56;
 }
 .edit-button a img{
   width: 40px;
-  border: 15px solid #E9896A;
-  color:#E9896A;
+  border: 15px solid #343F56;
+  color:#343F56;
 }
 
 .flex-outer {
@@ -498,4 +499,5 @@ hr{
 .random-quote {
   color:#343F56;
   font-style: italic;
+  text-align: center;
 }
