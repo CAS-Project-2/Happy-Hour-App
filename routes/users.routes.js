@@ -19,7 +19,7 @@ router
   .post(async (req, res) => {
     const { username, email, password, favcocktail } = req.body;
     if (!username || !email || !password) {
-      res.render("signup", {
+      res.render("login", {
         username,
         email,
         error: { type: "CRED_ERR", msg: "Missing credentials" },
@@ -58,7 +58,7 @@ router
 
     const loggedInUser = await User.findOne({ username });
     if (!loggedInUser) {
-      res.render("signup", {
+      res.render("login", {
         error: { type: "USR_ERR", msg: "User does not exist" },
       });
     }

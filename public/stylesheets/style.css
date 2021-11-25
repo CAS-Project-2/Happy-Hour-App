@@ -36,6 +36,7 @@ h2 {
   font-family: 'Nunito', sans-serif;
   font-size: 35px;
   display: flex;
+  text-align: center;
   flex-direction: column;
   align-items: center; 
 }
@@ -404,4 +405,12 @@ hr{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+}
+
+.cocktail-details-wrapper p {
+  margin-top: 5%;
+  width: 90%;
+  margin-left: 5%;
+  
 }
