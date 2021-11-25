@@ -60,10 +60,13 @@ router
 
     const loggedInUser = await User.findOne({ username });
     if (!loggedInUser) {
+      console.log("check")
       res.render("login", {
         error: { type: "USR_ERR", msg: "User does not exist" },
       });
+  
     }
+    console.log("check2")
 
     const pwsIsCorrect = bcrypt.compareSync(password, loggedInUser.password);
 
@@ -126,7 +129,10 @@ router
       if (req.session.loggedInUser) {
         const { _id } = req.session.loggedInUser;
         const user = await User.findById(_id);
-        res.render("cocktails/create-form", { user });
+        res.render("cocktails/create-form", { 
+          user,
+          error: { msg: "You need to be logged in to create a cocktail"}
+         });
       } else {
         res.render("login");
       }
