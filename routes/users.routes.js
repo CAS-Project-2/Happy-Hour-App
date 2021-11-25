@@ -37,9 +37,8 @@ router
 
     const salt = bcrypt.genSaltSync(5);
     const hashPwd = bcrypt.hashSync(password, salt);
-
     
-   const newUser =  await User.create({ username, email, password: hashPwd, favcocktail });
+    const newUser =  await User.create({ username, email, password: hashPwd, favcocktail });
     req.session.loggedInUser = newUser
     res.redirect("/");
   });
@@ -60,10 +59,13 @@ router
 
     const loggedInUser = await User.findOne({ username });
     if (!loggedInUser) {
+      console.log("check")
       res.render("login", {
         error: { type: "USR_ERR", msg: "User does not exist" },
       });
+  
     }
+    console.log("check2")
 
     const pwsIsCorrect = bcrypt.compareSync(password, loggedInUser.password);
 
@@ -122,11 +124,11 @@ router
   .route("/create-cocktail")
   .get(async (req, res) => {
     try {
-      //Passing the user for stablish the realtionship
+      //Passing the user to establish the relationship
       if (req.session.loggedInUser) {
         const { _id } = req.session.loggedInUser;
         const user = await User.findById(_id);
-        res.render("cocktails/create-form", { user });
+        res.render("cocktails/create-form", {user});
       } else {
         res.render("login");
       }

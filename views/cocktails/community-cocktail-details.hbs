@@ -9,26 +9,34 @@
   <img width="80px" src="{{cocktail.imgUrl}}" alt="Cocktail Image"    class="cocktail-image" />
 </div>
 <div class="cocktail-details-wrapper">
-
+<br>
   <p>
     <strong>Glass type: </strong> {{cocktail.glass}}
     <br>
+    <br>
     <strong>{{cocktail.alcoholic}}!</strong> 
+    <br>
     <br>
     <strong>Ingredients:</strong>  
     <br> 
+    <br>
     {{cocktail.ingredients}}
+    <br>
     <br>
     <strong>Instructions:</strong> 
     <br> 
+    <br>
     {{cocktail.instructions}}
-
-    {{#if showEdit}}
-      <a href="/cocktail/community/{{cocktail.id}}/edit">Edit</a>
-    {{/if}}
-
-    {{#if showDelete}}
-      <a href="/cocktail/community/{{cocktail.id}}/delete">Delete</a>
-    {{/if}}
+    <br>
+    <br>
   </p>
+  
+    {{#if showButtons}}
+     <div class="user-cocktails-buttons">
+    <div class="edit-button" >
+      <a href="/cocktail/community/{{cocktail.id}}/edit"><img  src="/images/edit-icon.png" alt="Edit Icon"></a>
+      </div>
+      <a href="/cocktail/community/{{cocktail.id}}/delete"><img  src="/images/delete-cocktail.png" alt="Delete Icon"></a>
+</div>
+    {{/if}}
 </div>

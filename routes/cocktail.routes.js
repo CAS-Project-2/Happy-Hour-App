@@ -195,13 +195,12 @@ router.get("/community/:id", (req, res) => {
     .then((cocktail) => {
       if (req.session.loggedInUser._id == cocktail.owner) {
         console.log(req.session.loggedInUser._id, cocktail.owner);
-        var showEdit = true;
-        var showDelete = true;
+        var showButtons = true;
+        
       }
       res.render("cocktails/community-cocktail-details", {
         cocktail,
-        showEdit,
-        showDelete,
+        showButtons
       });
     });
 });
