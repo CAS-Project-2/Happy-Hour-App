@@ -245,7 +245,6 @@ router.get("/my-favorites", (req, res) => {
         user.favorites
       .map((favId) => cocktailAPI.getById(favId))
       ).then((favCocktails) => {
-        console.log(favCocktails)
         res.render("my-favorites", { favs: favCocktails });
       });
     })
@@ -255,7 +254,6 @@ router.get("/my-favorites", (req, res) => {
 //Delete favourites
 router.get("/my-favorites/delete/:id", async (req, res) => {
   try {
-    console.log("Hello")
     const { _id } = req.session.loggedInUser;
     const id = req.params.id;
     let cocktailToDelete = await User.findByIdAndUpdate(_id, {$pull: {favorites : id}}, {new: true})
@@ -264,12 +262,21 @@ router.get("/my-favorites/delete/:id", async (req, res) => {
   });
 
 // to get fav btn
-router.get("/add-to-favorites/:id", (req, res) => {
+router.get("/add-to-favorites/:id", async (req, res) => {
+try {
+  if(req.session.loggedInUser){
   let userId = req.session.loggedInUser._id;
-
   let cocktailId = req.params.id;
-  User.findByIdAndUpdate(userId, { $push: { favorites: cocktailId } })
-    .catch(console.log);
+    let favAdded = await User.findByIdAndUpdate(userId, { $addToSet : { favorites: cocktailId }}, {new: true}) 
+    res.redirect("/users/my-favorites")
+  }
+  else{
+    res.render("login")
+  }   
+}
+catch (err) {
+  console.log(err)
+}
 });
 
 module.exports = router;
