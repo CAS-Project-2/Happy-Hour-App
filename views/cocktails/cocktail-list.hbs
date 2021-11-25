@@ -8,9 +8,10 @@
 <div class="cocktail-list-container">
 {{#each cocktails}}
 <div class="cocktail-container">
-    <a href="/cocktail/{{idDrink}}"><img src="{{strDrinkThumb}}"  class="cocktaimImg-list" alt="Cocktail Image"></a>
-    <h3>{{strDrink}}</h3>
-     
+    <div class="imgAndTitle">
+      <a href="/cocktail/{{idDrink}}"><img src="{{strDrinkThumb}}"  class="cocktaimImg-list" alt="Cocktail Image"></a>
+      <h3>{{strDrink}}</h3>
+   </div>
 
   <a class="fav-icon" href="/users/add-to-favorites/{{idDrink}}"><img class="fav-button" src="/images/fav-icon.png" alt="Fav icon"></a>
  </div>

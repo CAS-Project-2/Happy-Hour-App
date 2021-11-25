@@ -4,15 +4,20 @@
  <input id="back-button" type="button" value="Go back!" onclick="history.back()">
 </form>
 
-<div class="cocktail-filter-list">
-  <ul>
+
+
+<div class="cocktail-list-container">
 
 {{#each glasses}}
-    <li class="drink-title">{{this.strDrink}}</li>
-    <img src="{{strDrinkThumb}}" width="50px" class="image-thumbnail" alt="Cocktail Image">
-    <a href="/cocktail/{{idDrink}}" class>See</a>
-     <a href="/users/add-to-favorites/{{idDrink}}"><img  class="fav-button" src="/images/fav-icon.png" alt="Fav icon"></a> 
+<div class="cocktail-container">
+    <div class="imgAndTitle">
+      <a href="/cocktail/{{idDrink}}"><img src="{{strDrinkThumb}}" class="cocktaimImg-list" alt="Cocktail Image"></a>
+      <h3 class="drink-title">{{strDrink}}</h3>
+    </div>
+    <a class="fav-icon" href="/users/add-to-favorites/{{idDrink}}"><img class="fav-button" src="/images/fav-icon.png" alt="Fav icon"></a>
+ </div>
+ <hr>
+{{/each}}
 
-    {{/each}}
-  </ul>
+
 </div>

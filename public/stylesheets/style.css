@@ -235,6 +235,11 @@ hr{
   text-align: left;
   margin-left: -4px;
 }
+.imgAndTitle{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 .fav-icon{
   text-align: left;
   margin-right: 10px;
