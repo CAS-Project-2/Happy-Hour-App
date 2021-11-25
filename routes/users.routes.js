@@ -19,7 +19,7 @@ router
   .post(async (req, res) => {
     const { username, email, password, favcocktail } = req.body;
     if (!username || !email || !password) {
-      res.render("login", {
+      res.render("signup", {
         username,
         email,
         error: { type: "CRED_ERR", msg: "Missing credentials" },
@@ -31,14 +31,16 @@ router
       res.render("signup", {
         username,
         email,
-        error: { type: "USR_ERR", msg: "Email exists" },
+        error: { type: "USR_ERR", msg: "Email already exists" },
       });
     }
 
     const salt = bcrypt.genSaltSync(5);
     const hashPwd = bcrypt.hashSync(password, salt);
 
-    await User.create({ username, email, password: hashPwd, favcocktail });
+    
+   const newUser =  await User.create({ username, email, password: hashPwd, favcocktail });
+    req.session.loggedInUser = newUser
     res.redirect("/");
   });
 
@@ -71,7 +73,7 @@ router
     } else {
       res.render(
         res.render("login", {
-          error: { type: "PWD_ERR", msg: "Password incorrect" },
+          error: { type: "PWD_ERR", msg: "Wrong credentials...try again!" },
         })
       );
     }
