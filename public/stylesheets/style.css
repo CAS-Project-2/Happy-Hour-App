@@ -323,18 +323,19 @@ hr{
   justify-content: center;
   font-family: 'Nunito', sans-serif;
   font-size: 1em;
-  font-weight:bold
+  font-weight:bold;
+
 }
 .rum-box, .whisky-box, .coffee-box{
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 15px solid #343F56;
+  border: 15px solid #E9896A;
   width: 35px;
   height: 20px;
   text-align: center;
   border-radius: 10px;
-  background-color: #343F56;
+  background-color: #E9896A;
   margin: 10px 10px;
   padding: 15px;
   color: #F8F5F1;
