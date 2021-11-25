@@ -1,8 +1,16 @@
-<h2>Edit profile</h2>
 
-<form action="/users/{{user._id}}/edit" method="POST">
-  <label for="username">Username: </label>
-  <input type="text" name="username" value={{user.username}} />
 
-  <button type="submit">Update</button>
-</form>
+
+<h2>Update your username</h2>
+
+
+  <form action="/users/{{user._id}}/edit" method="POST">
+  <div class="update-user-container">
+    <div class="field-box">
+      <input type="text" name="username" value={{user.username}} />
+    </div>
+    <div class="button-box">
+      <button type="submit">Update</button>
+      </div>
+      </div>
+  </form>
