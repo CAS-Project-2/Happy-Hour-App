@@ -5,7 +5,7 @@ body {
   padding: 10px;
   font-family: 'Nunito', sans-serif;
   font-size: 17px;
-  background-color: #cfe4eb;
+  background-color: #FFFFFF;
   margin-bottom: 80px;
 }
 #back-button{
@@ -87,7 +87,7 @@ ul {
   
 }
 
- button {
+ .random-button {
   margin-top: 190px;
   
   transition: all .5s ease;
@@ -104,7 +104,7 @@ ul {
   outline: none;
   border-radius: 20px;
 }
-button:hover {
+.welcome-button-style:hover {
   color: #1D1D27;
   background-color: #ff9101;
 }
@@ -114,7 +114,7 @@ button:hover {
 
 .top-navbar{
   width: 100%;
-  background-color: #cfe4eb;
+ 
   display: flex;
   justify-content: end;
 }
@@ -133,7 +133,7 @@ hr{
 }
 
 .bottom-navbar {
-  background-color: #1D1D27;
+  background-color: #C6E0FF;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -141,8 +141,8 @@ hr{
   justify-content: center;
   
   width: 100%;
-  border-top: 9px solid #1D1D27;
-  border-bottom: 7px solid #1D1D27;
+  border-top: 9px solid #C6E0FF;
+  border-bottom: 7px solid #C6E0FF;
   margin-left: 0;
 }
 
@@ -225,10 +225,32 @@ hr{
 }
 
 .cocktail-container{
-  margin: 10px 10px ;
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-top: 5px;
+  justify-content: space-between;
+}
+.cocktail-container h3{
+  text-align: left;
+  margin-left: -4px;
+}
+.imgAndTitle{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.fav-icon{
+  text-align: left;
+  margin-right: 10px;
+  margin-left: 20px;
+ 
+}
+.fav-button  {
+ 
+  border: transparent;
+  
+  width: 40px;
 }
 
 
@@ -340,9 +362,38 @@ hr{
 }
 
 
-button #fav-btn {
-  background-color: yellow;
+.community-list-container{
+
+  width: 100%;
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+.community-list-container hr{
+  border: 1px solid #1D1D27;
+  width: 90%
+}
+
+.community-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 5px;
+  justify-content: flex-start;
+}
+.community-container h3{
+  text-align: left;
+  margin-left: -4px;
+}
+.imgAndTitle{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
 .flex-outer {
   display: flex;
   flex-direction: column;
