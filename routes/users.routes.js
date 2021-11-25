@@ -265,9 +265,6 @@ router.get("/add-to-favorites/:id", (req, res) => {
 
   let cocktailId = req.params.id;
   User.findByIdAndUpdate(userId, { $push: { favorites: cocktailId } })
-    .then(() => {
-      res.redirect("/users/profile");
-    })
     .catch(console.log);
 });
 
