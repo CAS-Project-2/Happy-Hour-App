@@ -393,14 +393,11 @@ hr{
   align-items: center;
 }
 
-
 .flex-outer {
   display: flex;
   flex-direction: column;
   align-items:flex-start;
 }
-
-
 
 
 .cocktail-details-wrapper {
