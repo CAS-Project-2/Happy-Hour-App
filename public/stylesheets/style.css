@@ -90,11 +90,10 @@ ul {
 }
 
  .random-button {
-  margin-top: 190px;
-  
+  margin-top: 10%;
   transition: all .5s ease;
-  color: #E9896A ;
-  border: 3px solid #E9896A;
+  color: #343f56 ;
+  border: 3px solid #343f56 ;
   font-family:'Nunito', sans-serif;
   font-weight: bold;
   text-transform: uppercase;
@@ -106,12 +105,10 @@ ul {
   outline: none;
   border-radius: 20px;
 }
-.welcome-button-style:hover {
-  color: #5AA897;
-  background-color: #E9896A;
+.random-button:hover {
+  color: #F8F5F1;
+  background-color: #343f56 ;
 }
-
-
 
 
 .top-navbar{
@@ -564,4 +561,5 @@ input[type=file]{
 .random-quote {
   color:#343F56;
   font-style: italic;
+  width: 90%;
 }
