@@ -2,21 +2,33 @@
  <input id="back-button" type="button" value="Go back!" onclick="history.back()">
 </form>
 
-<ul>
- 
+     <h2> {{cocktail.name}}</h2>
+
+ <div class="cocktail-image-container">
+
   <img width="80px" src="{{cocktail.imgUrl}}" alt="Cocktail Image"    class="cocktail-image" />
+</div>
+<div class="cocktail-details-wrapper">
 
-  <li> <strong>Name:</strong>  {{cocktail.name}}</li>
-  <li> <strong>Glass type: </strong> {{cocktail.glass}}</li>
-  <li> <strong>{{cocktail.alcoholic}}!</strong> </li>
-  <li><strong>Ingredients:</strong>  {{cocktail.ingredients}}</li>
-  <li> <strong>Instructions:</strong>  {{cocktail.instructions}}</li>
+  <p>
+    <strong>Glass type: </strong> {{cocktail.glass}}
+    <br>
+    <strong>{{cocktail.alcoholic}}!</strong> 
+    <br>
+    <strong>Ingredients:</strong>  
+    <br> 
+    {{cocktail.ingredients}}
+    <br>
+    <strong>Instructions:</strong> 
+    <br> 
+    {{cocktail.instructions}}
 
-  {{#if showEdit}}
-    <a href="/cocktail/community/{{cocktail.id}}/edit">Edit</a>
-  {{/if}}
+    {{#if showEdit}}
+      <a href="/cocktail/community/{{cocktail.id}}/edit">Edit</a>
+    {{/if}}
 
-  {{#if showDelete}}
-    <a href="/cocktail/community/{{cocktail.id}}/delete">Delete</a>
-  {{/if}}
-</ul>
+    {{#if showDelete}}
+      <a href="/cocktail/community/{{cocktail.id}}/delete">Delete</a>
+    {{/if}}
+  </p>
+</div>
