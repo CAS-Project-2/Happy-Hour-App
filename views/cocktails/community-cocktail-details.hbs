@@ -23,12 +23,14 @@
     <br> 
     {{cocktail.instructions}}
 
-    {{#if showEdit}}
-      <a href="/cocktail/community/{{cocktail.id}}/edit">Edit</a>
-    {{/if}}
-
-    {{#if showDelete}}
-      <a href="/cocktail/community/{{cocktail.id}}/delete">Delete</a>
-    {{/if}}
   </p>
+  
+    {{#if showButtons}}
+     <div class="user-cocktails-buttons">
+    <div class="edit-button" >
+      <a href="/cocktail/community/{{cocktail.id}}/edit"><img  src="/images/edit-icon.png" alt="Edit Icon"></a>
+      </div>
+      <a href="/cocktail/community/{{cocktail.id}}/delete"><img  src="/images/delete-cocktail.png" alt="Delete Icon"></a>
+</div>
+    {{/if}}
 </div>

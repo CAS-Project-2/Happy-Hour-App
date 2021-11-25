@@ -37,9 +37,8 @@ router
 
     const salt = bcrypt.genSaltSync(5);
     const hashPwd = bcrypt.hashSync(password, salt);
-
     
-   const newUser =  await User.create({ username, email, password: hashPwd, favcocktail });
+    const newUser =  await User.create({ username, email, password: hashPwd, favcocktail });
     req.session.loggedInUser = newUser
     res.redirect("/");
   });
