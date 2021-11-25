@@ -262,12 +262,21 @@ router.get("/my-favorites/delete/:id", async (req, res) => {
   });
 
 // to get fav btn
-router.get("/add-to-favorites/:id", (req, res) => {
-  let userId = req.session.loggedInUser._id;
-
-  let cocktailId = req.params.id;
-  User.findByIdAndUpdate(userId, { $push: { favorites: cocktailId } })
-    .catch(console.log);
-});
+router.get("/add-to-favorites/:id", async (req, res) => {
+  try {
+    if(req.session.loggedInUser){
+    let userId = req.session.loggedInUser._id;
+    let cocktailId = req.params.id;
+      let favAdded = await User.findByIdAndUpdate(userId, { $addToSet : { favorites: cocktailId }}, {new: true}) 
+      res.redirect("/users/my-favorites")
+    }
+    else{
+      res.render("login")
+    }   
+  }
+  catch (err) {
+    console.log(err)
+  }
+  });
 
 module.exports = router;
