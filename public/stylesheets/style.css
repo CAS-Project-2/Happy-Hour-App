@@ -104,12 +104,14 @@ ul {
   padding: 20px;
   outline: none;
   border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .random-button:hover {
   color: #F8F5F1;
   background-color: #343f56 ;
-}
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
+}
 
 .top-navbar{
   width: 100%;
@@ -183,6 +185,7 @@ hr{
   color: white;
   font-size: 1.2em;
   font-weight: bold;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 
@@ -200,6 +203,7 @@ hr{
   align-items: center;
   justify-content: center;
   border: 15px solid #E9896A;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   width: 30px;
   height: 20px;
   border-radius: 10px;
@@ -247,8 +251,14 @@ hr{
   color: #343F56;
 }
 
+.fav-icon:hover{
+
+  background-color: rgb(240, 209, 35);
+  border: 13px solid rgb(240, 209, 35);
+  border-radius: 4px;
+}
+
 .fav-button  {
- 
   border: transparent;
   width: 40px;
 }
@@ -284,6 +294,7 @@ hr{
   text-align: center;
   padding: 15px;
   color: #F8F5F1;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   font-size: 1.2em;
 }
 
@@ -311,6 +322,7 @@ hr{
   padding: 15px;
   color: white;
   font-size: 1.2em;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .rums-container, .whiskies-container, .coffees-container {
@@ -335,6 +347,7 @@ hr{
   margin: 10px 10px;
   padding: 15px;
   color: #F8F5F1;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .fruities-container {
@@ -356,6 +369,7 @@ hr{
   text-align: center;
   border-radius: 10px;
   background-color: #343F56;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   margin: 10px 10px;
   padding: 15px;
   color: white;
@@ -474,7 +488,7 @@ hr{
 .flex-outer {
   display: flex;
   flex-direction: column;
-  align-items:flex-start;
+  align-items:center;
 }
 
 
@@ -517,6 +531,7 @@ input[type=text]{
 	border: none;
   border-radius: 4px;
 	color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .create-name input[type=text]{
@@ -563,4 +578,48 @@ input[type=file]{
   color:#343F56;
   font-style: italic;
   width: 90%;
+}
+
+@media only screen and (min-width: 600px) {
+  .logo-welcome-page {
+    width: 20%;
+    margin-top: -10px;
+  
+  }
+  .random-quote {
+    color:#343F56;
+    font-style: italic;
+    font-size: 1.7em;
+    text-align: center;
+    width: 90%;
+  }
+  .cocktail-image {
+    width: 30%;
+
+  }
+  .flex-outer{
+    display: flex;
+    align-items: center;
+  }
+  .profile-container{
+margin: 5%;
+  
+  }
+  .cocktail-container{
+    margin-left: 4%;
+  }
+  .delete-button{
+  
+    margin-right: 100px;
+    width: 40px;
+  }
+  .update-user-container{
+
+    margin-top: 15%;
+  }
+  input[type=text]{
+    font-size: 1.2em;
+    padding: 14px;
+ 	
+  }
 }
