@@ -625,4 +625,28 @@ margin: 5%;
     padding: 14px;
  	
   }
+  .imgAndTitle img{
+    width: 200px;
+    height: 200px;
+  }
+  .user-cocktails-buttons{
+    margin-left: 5%;
+  }
+  .filter-container{
+    margin-top: 5%;
+  }
+  .alphabet-container{
+    margin-top: 10%;
+  }
+  .fav-icon{
+    margin-right: 90px;
+  }
+  .glass-box, .liquor-box {
+    width: 40%;
+  }
+
+  .rums-container, .whiskies-container, .coffees-container, .fruities-container{
+    margin-top: 5%
+  }
+
 }
