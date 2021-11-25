@@ -362,6 +362,37 @@ hr{
 }
 
 
+.community-list-container{
+
+  width: 100%;
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.community-list-container hr{
+  border: 1px solid #1D1D27;
+  width: 90%
+}
+
+.community-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 5px;
+  justify-content: flex-start;
+}
+.community-container h3{
+  text-align: left;
+  margin-left: -4px;
+}
+.imgAndTitle{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 
 .flex-outer {
   display: flex;
