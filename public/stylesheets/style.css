@@ -412,6 +412,11 @@ hr{
   flex-direction: row;
 
 }
+.session-buttons{
+  display: flex;
+  flex-direction: row;
+
+}
 
 .user-buttons a{
   background-color: rgb(247, 210, 154);
@@ -420,6 +425,16 @@ hr{
   margin: 10px;
   font-size: 1.2em;
   color: #1D1D27;
+}
+.session-buttons a{
+  border-radius: 4px;
+  text-align: center;
+  margin: 10px;
+  font-size: 1.2em;
+  color: #1D1D27;
+  background-color: rgb(147, 187, 247);
+  border: 15px solid rgb(147, 187, 247);
+  
 }
 .profile-info p{
   background-color: rgb(247, 154, 154);
@@ -432,7 +447,27 @@ hr{
  margin-top: 0;
 }
 
+.user-cocktails-buttons{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 
+.user-cocktails-buttons a img {
+  width: 30px ;
+
+  border-radius: 4px;
+  text-align: center;
+  margin: 10px;
+  font-size: 1.2em;
+  color: #1D1D27;
+  background-color: rgb(147, 187, 247);
+  border: 15px solid rgb(147, 187, 247);
+}
+.edit-button a img{
+  width: 40px;
+  border: 15px solid rgb(147, 187, 247);
+}
 
 .flex-outer {
   display: flex;

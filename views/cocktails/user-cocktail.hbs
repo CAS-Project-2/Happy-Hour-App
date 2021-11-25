@@ -2,25 +2,33 @@
  <input id="back-button" type="button" value="Go back!" onclick="history.back()">
 </form>
 
-<ul>
+     <h2> {{cocktail.name}}</h2>
 
-    <li>Name: {{cocktail.name}}</li>
-    <br>
-    <li>Glass type: {{cocktail.glass}}</li>
-    <br>
-    <li>{{cocktail.alcoholic}}</li>
-    <br>
-    <li>Ingredients: {{cocktail.ingredients}}</li>
-    <br>
-    <li>Instructions: {{cocktail.instructions}}</li>
-    <br>
-    <br>
-    <img width="80px" src="{{cocktail.imgUrl}}" alt="Cocktail Image">
-    <br>
-    <br>
-    <a href="/users/my-cocktails/{{cocktail.id}}/edit">Edit</a>
-    <br>
-    <br>
-    <a href="/users/my-cocktails/{{cocktail.id}}/delete">Delete</a>
+ <div class="cocktail-image-container">
 
-</ul>
+  <img width="80px" src="{{cocktail.imgUrl}}" alt="Cocktail Image"    class="cocktail-image" />
+</div>
+<div class="cocktail-details-wrapper">
+
+  <p>
+    <strong>Glass type: </strong> {{cocktail.glass}}
+    <br>
+    <strong>{{cocktail.alcoholic}}!</strong> 
+    <br>
+    <strong>Ingredients:</strong>  
+    <br> 
+    {{cocktail.ingredients}}
+    <br>
+<br>
+    <strong>Instructions:</strong> 
+    <br> 
+    {{cocktail.instructions}}
+  </p>
+<div class="user-cocktails-buttons">
+    <div class="edit-button" >
+      <a href="/cocktail/community/{{cocktail.id}}/edit"><img  src="/images/edit-icon.png" alt="Edit Icon"></a>
+      </div>
+      <a href="/cocktail/community/{{cocktail.id}}/delete"><img  src="/images/delete-cocktail.png" alt="Delete Icon"></a>
+</div>
+  </p>
+</div>
