@@ -5,7 +5,7 @@ body {
   padding: 10px;
   font-family: 'Nunito', sans-serif;
   font-size: 17px;
-  background-color: #FFFFFF;
+  background-color: #F8F5F1;
   margin-bottom: 80px;
 }
 #back-button{
@@ -16,10 +16,11 @@ body {
   font-family: 'Nunito', sans-serif;
   border:none;
   background-color: transparent;
+  color: #5AA897;
 
 }
 h1 {
-  color: #1D1D27;
+  color: #343F56;
   font-family: 'Nunito', sans-serif;
   font-size: xx-large;
   text-align: center;
@@ -32,7 +33,7 @@ h1 {
 }
 
 h2 {
-  color: #31525B;
+  color: #5AA897;
   font-family: 'Nunito', sans-serif;
   font-size: 35px;
   display: flex;
@@ -42,7 +43,7 @@ h2 {
 }
 
 a {
-  color: #31525B;
+  color: #5AA897;
   text-decoration: none;
 }
 ul {
@@ -92,8 +93,8 @@ ul {
   margin-top: 190px;
   
   transition: all .5s ease;
-  color: #1D1D27;
-  border: 3px solid #ff9101;
+  color: #E9896A ;
+  border: 3px solid #E9896A;
   font-family:'Nunito', sans-serif;
   font-weight: bold;
   text-transform: uppercase;
@@ -106,8 +107,8 @@ ul {
   border-radius: 20px;
 }
 .welcome-button-style:hover {
-  color: #1D1D27;
-  background-color: #ff9101;
+  color: #5AA897;
+  background-color: #E9896A;
 }
 
 
@@ -115,12 +116,12 @@ ul {
 
 .top-navbar{
   width: 100%;
- 
   display: flex;
   justify-content: end;
+  color: #343F56;
 }
 hr{
-  border: 1px solid #1D1D27
+  border: 1px solid #343F56
 
 }
 #profile-icon{
@@ -134,7 +135,7 @@ hr{
 }
 
 .bottom-navbar {
-  background-color: #C6E0FF;
+  background-color: #5AA897;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -142,8 +143,8 @@ hr{
   justify-content: center;
   
   width: 100%;
-  border-top: 9px solid #C6E0FF;
-  border-bottom: 7px solid #C6E0FF;
+  border-top: 9px solid #5AA897;
+  border-bottom: 7px solid #5AA897;
   margin-left: 0;
 }
 
@@ -175,11 +176,11 @@ hr{
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 15px solid #1D1D27;
+  border: 15px solid #343F56;
   width: 80px;
   height: 50px;
   border-radius: 10px;
-  background-color: #1D1D27;
+  background-color: #343F56;
   margin: 10px 10px;
   padding: 15px;
   color: white;
@@ -201,14 +202,14 @@ hr{
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 15px solid #1D1D27;
+  border: 15px solid #E9896A;
   width: 30px;
   height: 20px;
   border-radius: 10px;
-  background-color: #1D1D27;
+  background-color: #E9896A;
   margin: 10px 10px;
   padding: 15px;
-  color: white;
+  color: #F8F5F1 ;
 }
 
 .cocktail-list-container{
@@ -221,7 +222,7 @@ hr{
   justify-content: center;
 }
 .cocktail-list-container hr{
-  border: 1px solid #1D1D27;
+  border: 1px solid #343F56;
   width: 90%
 }
 
@@ -235,6 +236,7 @@ hr{
 .cocktail-container h3{
   text-align: left;
   margin-left: -4px;
+  color: #343F56;
 }
 .imgAndTitle{
   display: flex;
@@ -245,8 +247,9 @@ hr{
   text-align: left;
   margin-right: 10px;
   margin-left: 20px;
- 
+  color: #343F56;
 }
+
 .fav-button  {
  
   border: transparent;
@@ -274,16 +277,16 @@ hr{
 .glass-box{
   display: flex;
   justify-content: center;
-  border: 15px solid #1D1D27;
+  border: 15px solid #E9896A;
   width: 70%;
   height: 20px;
   border-radius: 10px;
-  background-color: #1D1D27;
+  background-color: #E9896A;
   margin-bottom: 10px;
   margin-top: 10px;
   text-align: center;
   padding: 15px;
-  color: white;
+  color: #F8F5F1;
   font-size: 1.2em;
 }
 
@@ -300,11 +303,11 @@ hr{
 .liquor-box{
   display: flex;
   justify-content: center;
-  border: 15px solid #1D1D27;
+  border: 15px solid #E9896A;
   width: 70%;
   height: 20px;
   border-radius: 10px;
-  background-color: #1D1D27;
+  background-color: #E9896A ;
   text-align: center;
   margin-bottom: 10px;
   margin-top: 10px;
@@ -326,15 +329,15 @@ hr{
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 15px solid #1D1D27;
+  border: 15px solid #343F56;
   width: 35px;
   height: 20px;
   text-align: center;
   border-radius: 10px;
-  background-color: #1D1D27;
+  background-color: #343F56;
   margin: 10px 10px;
   padding: 15px;
-  color: white;
+  color: #F8F5F1;
 }
 
 .fruities-container {
@@ -350,12 +353,12 @@ hr{
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 15px solid #1D1D27;
+  border: 15px solid #343F56;
   width: 65px;
   height: 20px;
   text-align: center;
   border-radius: 10px;
-  background-color: #1D1D27;
+  background-color: #343F56;
   margin: 10px 10px;
   padding: 15px;
   color: white;
@@ -372,7 +375,7 @@ hr{
   justify-content: center;
 }
 .community-list-container hr{
-  border: 1px solid #1D1D27;
+  border: 1px solid #343F56;
   width: 90%
 }
 
@@ -382,6 +385,7 @@ hr{
   align-items: center;
   margin-top: 5px;
   justify-content: flex-start;
+  color: #343F56;
 }
 .community-container h3{
   text-align: left;
@@ -418,8 +422,8 @@ hr{
 }
 
 .user-buttons a{
-  background-color: rgb(247, 210, 154);
-  border: 15px solid rgb(247, 210, 154);
+  background-color:#E9896A;
+  border: 15px solid #E9896A;
   border-radius: 4px;
   margin: 10px;
   font-size: 1.2em;
@@ -431,13 +435,13 @@ hr{
   margin: 10px;
   font-size: 1.2em;
   color: #1D1D27;
-  background-color: rgb(147, 187, 247);
-  border: 15px solid rgb(147, 187, 247);
+  background-color: #5AA897 ;
+  border: 15px solid #5AA897;
   
 }
 .profile-info p{
-  background-color: rgb(247, 154, 154);
-  border: 15px solid rgb(247, 154, 154) ;
+  background-color: #E9896A;
+  border: 15px solid #E9896A ;
   border-radius: 4px;
   font-size: 1.2em;
 
@@ -460,12 +464,13 @@ hr{
   margin: 10px;
   font-size: 1.2em;
   color: #1D1D27;
-  background-color: rgb(147, 187, 247);
-  border: 15px solid rgb(147, 187, 247);
+  background-color: #E9896A;
+  border: 15px solid #E9896A;
 }
 .edit-button a img{
   width: 40px;
-  border: 15px solid rgb(147, 187, 247);
+  border: 15px solid #E9896A;
+  color:#E9896A;
 }
 
 .flex-outer {
@@ -555,4 +560,8 @@ input[type=file]{
 	border: none;
   border-radius: 4px;
 	color: #fff;
+}
+.random-quote {
+  color:#343F56;
+  font-style: italic;
 }
