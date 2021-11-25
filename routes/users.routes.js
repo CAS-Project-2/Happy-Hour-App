@@ -262,7 +262,6 @@ router.get("/my-favorites/delete/:id", async (req, res) => {
 // to get fav btn
 router.get("/add-to-favorites/:id", (req, res) => {
   let userId = req.session.loggedInUser._id;
-
   let cocktailId = req.params.id;
   User.findByIdAndUpdate(userId, { $push: { favorites: cocktailId } })
     .then(() => {
