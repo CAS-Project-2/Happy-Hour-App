@@ -1,5 +1,6 @@
+<div class="signup">
 <form action="/users/login" method="post">
-
+<div class="signup-form">
   <label for="username"></label>
   <input
     type="text"
@@ -8,6 +9,8 @@
     required="true"
     placeholder="Username "
   />
+</div>
+<div class="signup-form">
 
   <label for="password"></label>
   <input
@@ -16,12 +19,14 @@
     required="true"
     placeholder="Password"
   />
+</div>
+<div class="signup-form">
 
-  <button type="submit">Login</button>
-  <a href="/users/signup">Don't have an account? Sign up here</a>
-
+  <button class="submit-button"  type="submit">Login</button>
+  <a href="/users/signup">Don't have an account? Sign up shere</a>
+</div>
 </form>
-
+</div>
 {{#if error}}
   <p>{{error.msg}}</p>
 {{/if}}
