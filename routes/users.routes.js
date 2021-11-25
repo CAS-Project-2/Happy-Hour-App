@@ -264,8 +264,8 @@ router.get("/add-to-favorites/:id", async (req, res) => {
 try {
   let userId = req.session.loggedInUser._id;
   let cocktailId = req.params.id;
-    let favAdded = await User.findByIdAndUpdate(userId, { $addToSet : { favorites: cocktailId }}, {new: true})    
-    // res.r
+    let favAdded = await User.findByIdAndUpdate(userId, { $addToSet : { favorites: cocktailId }}, {new: true}) 
+    res.redirect("/users/my-favorites")   
 }
 catch (err) {
   console.log(err)
