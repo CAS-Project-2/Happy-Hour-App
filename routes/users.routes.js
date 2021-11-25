@@ -129,10 +129,7 @@ router
       if (req.session.loggedInUser) {
         const { _id } = req.session.loggedInUser;
         const user = await User.findById(_id);
-        res.render("cocktails/create-form", { 
-          user,
-          error: { msg: "You need to be logged in to create a cocktail"}
-         });
+        res.render("cocktails/create-form", {user});
       } else {
         res.render("login");
       }
