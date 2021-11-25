@@ -1,20 +1,24 @@
+<div class="signup">
 <form action="/users/signup" method="post">
-
-<label for="email"></label>
-<input type="text" name="email" unique="true" required="true" placeholder="Email"/>
-
-<label for="username"></label>
-<input type="text" name="username" unique="true" required="true" placeholder="Username "/>
+<div class="signup-form">
+    <label for="email"></label>
+    <input type="text" name="email" unique="true" required="true" placeholder="Email"/>
+</div>
+<div class="signup-form">
+    <label for="username"></label>
+    <input type="text" name="username" unique="true" required="true" placeholder="Username "/>
+</div>
+<div class="signup-form">
 
 <label for="password"></label>
 <input type="password" name="password" required="true" placeholder="Password"/>
-
-<label for="favcocktail"></label>
-<input type="favcocktail" name="favcocktail" placeholder="Your favourite cocktail"/>
-
-<button type="submit">Signup</button>
+</div>
+<div class="signup-form">
+<button class="submit-button" type="submit">Signup</button>
+</div>
 
 </form>
+</div>
 
 {{#if error}}
 <p>{{error.msg}}</p>
