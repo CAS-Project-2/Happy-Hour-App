@@ -31,7 +31,7 @@ router
       res.render("signup", {
         username,
         email,
-        error: { type: "USR_ERR", msg: "Email already exists" },
+        error: { type: "USR_ERR", msg: "This email is already registered" },
       });
     }
 
@@ -144,7 +144,7 @@ router
           name,
           ingredients,
           instructions,
-          error: { type: "CKTAIL_ERR", msg: "Missing fields" },
+          error: { type: "CKTAIL_ERR", msg: "Some fields are empty!" },
         });
       }
 
