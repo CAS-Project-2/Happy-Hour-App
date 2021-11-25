@@ -125,7 +125,7 @@ router
   .route("/create-cocktail")
   .get(async (req, res) => {
     try {
-      //Passing the user for stablish the realtionship
+      //Passing the user to establish the relationship
       if (req.session.loggedInUser) {
         const { _id } = req.session.loggedInUser;
         const user = await User.findById(_id);
