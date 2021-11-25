@@ -31,14 +31,16 @@ router
       res.render("signup", {
         username,
         email,
-        error: { type: "USR_ERR", msg: "Email exists" },
+        error: { type: "USR_ERR", msg: "This email is already registered" },
       });
     }
 
     const salt = bcrypt.genSaltSync(5);
     const hashPwd = bcrypt.hashSync(password, salt);
 
-    await User.create({ username, email, password: hashPwd, favcocktail });
+    
+   const newUser =  await User.create({ username, email, password: hashPwd, favcocktail });
+    req.session.loggedInUser = newUser
     res.redirect("/");
   });
 
@@ -58,7 +60,7 @@ router
 
     const loggedInUser = await User.findOne({ username });
     if (!loggedInUser) {
-      res.render("signup", {
+      res.render("login", {
         error: { type: "USR_ERR", msg: "User does not exist" },
       });
     }
@@ -71,7 +73,7 @@ router
     } else {
       res.render(
         res.render("login", {
-          error: { type: "PWD_ERR", msg: "Password incorrect" },
+          error: { type: "PWD_ERR", msg: "Wrong credentials...try again!" },
         })
       );
     }
@@ -142,7 +144,7 @@ router
           name,
           ingredients,
           instructions,
-          error: { type: "CKTAIL_ERR", msg: "Missing fields" },
+          error: { type: "CKTAIL_ERR", msg: "Some fields are empty!" },
         });
       }
 
@@ -264,9 +266,6 @@ router.get("/add-to-favorites/:id", (req, res) => {
   let userId = req.session.loggedInUser._id;
   let cocktailId = req.params.id;
   User.findByIdAndUpdate(userId, { $push: { favorites: cocktailId } })
-    .then(() => {
-      res.redirect("/users/profile");
-    })
     .catch(console.log);
 });
 
