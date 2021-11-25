@@ -1,21 +1,20 @@
 <h1>Add a cocktail</h1>
-<ul class="flex-outer">
+<div class="flex-outer">
 	<form action='/users/create-cocktail' method='POST' enctype="multipart/form-data" />
-	<li>
-		<label for="name">Cocktail Name:</label>
-		<input class='input' type='text' name='name' required />
-	</li>
+		<div class="create-name">
+			<label for="name">Cocktail Name:</label>
+			<input class='input' type='text' name='name' placeholder="Choose a name..." required />
+		</div>
 	<br>
-	<li>
 		<label for="alcoholic">Alcoholic?</label>
 		<select id="alcoholic" name="alcoholic" required>
 			<option selected disabled value="">Select an Option...</option>
 			<option value="Alcoholic">Alcoholic</option>
 			<option value="Non alcoholic">Non Alcoholic</option>
 		</select>
-	</li>
 	<br>
-	<li>
+		<br>
+
 		<label for="glass">Glass Type:</label>
 		<select id="glass" name="glass">
 			<option selected disabled value="Select an option">Select an Option...</option>
@@ -40,36 +39,26 @@
 			<option value="Whiskey Glass">Whiskey Glass</option>
 			<option value="Wine glass">Wine Glass</option>
 		</select>
-	</li>
+	<br>
 	<br>
 	</select>
-	<li>
 		<textarea name="ingredients" rows="7" cols="30" placeholder="Ingredients and Measures"></textarea>
-	</li>
 	<br>
-	<li>
 		<textarea name="instructions" rows="7" cols="30" placeholder="Instructions"></textarea>
-	</li>
-	<li>
 		<label for="owner"></label>
 		<input hidden class='input' type='text' name='owner' data-owner-name="{{user.username}}" value="{{ user._id }}"
 			readonly />
-	</li>
 	<br>
-	<li>
+	<br>
 		<label> Cocktail Image:</label>
-	</li>
-	<li>
 		<input type="file" name="imgUrl" />
-	</li>
+				<br>
 	<br>
-	<li>
-		<button class='button is-rounded is-danger' type='submit'>Create</button>
-	</li>
-</ul>
+		<button class='file-button' type='submit'>Create</button>
+</div>
 </form>
 
 
-{{#if errorMessage}}
-<p>{{errorMessage}}</p>
+{{#if error}}
+<p>{{error.msg}}</p>
 {{/if}}
