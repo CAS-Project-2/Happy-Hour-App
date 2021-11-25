@@ -393,6 +393,46 @@ hr{
   flex-direction: row;
   align-items: center;
 }
+.delete-button{
+  text-align: left;
+  margin-right: 40px;
+  width: 25px;
+}
+
+.profile-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20%;
+}
+
+.user-buttons{
+  display: flex;
+  flex-direction: row;
+
+}
+
+.user-buttons a{
+  background-color: rgb(247, 210, 154);
+  border: 15px solid rgb(247, 210, 154);
+  border-radius: 4px;
+  margin: 10px;
+  font-size: 1.2em;
+  color: #1D1D27;
+}
+.profile-info p{
+  background-color: rgb(247, 154, 154);
+  border: 15px solid rgb(247, 154, 154) ;
+  border-radius: 4px;
+  font-size: 1.2em;
+
+}
+.profile-info h3{
+ margin-top: 0;
+}
+
+
 
 .flex-outer {
   display: flex;
