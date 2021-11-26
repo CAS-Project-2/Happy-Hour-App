@@ -116,7 +116,7 @@ ul {
 .top-navbar{
   width: 100%;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   color: #343F56;
 }
 hr{
