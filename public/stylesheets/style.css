@@ -18,7 +18,7 @@ body {
   background-color: transparent;
   color: #5AA897;
 
-}
+}c
 h1 {
   color: #343F56;
   font-family: 'Nunito', sans-serif;
@@ -440,6 +440,8 @@ hr{
   margin: 10px;
   font-size: 1.2em;
   color: #F8F5F1;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
 }
 .session-buttons a{
   border-radius: 4px;
@@ -449,6 +451,8 @@ hr{
   color: #F8F5F1;
   background-color: #343F56 ;
   border: 15px solid #343F56;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
   
 }
 .profile-info p{

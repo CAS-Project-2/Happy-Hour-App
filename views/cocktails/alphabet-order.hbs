@@ -3,30 +3,11 @@
 </form>
 
 <div class="alphabet-container">
-        <a class="letter-box" href="/cocktail/alphabet/a">A</a>
-        <a class="letter-box" href="/cocktail/alphabet/b">B</a>
-        <a class="letter-box" href="/cocktail/alphabet/c">C</a>
-        <a class="letter-box" href="/cocktail/alphabet/d">D</a>
-        <a class="letter-box" href="/cocktail/alphabet/e">E</a>
-        <a class="letter-box" href="/cocktail/alphabet/f">F</a>
-        <a class="letter-box" href="/cocktail/alphabet/g">G</a>
-        <a class="letter-box" href="/cocktail/alphabet/h">H</a>
-        <a class="letter-box" href="/cocktail/alphabet/i">I</a>
-        <a class="letter-box" href="/cocktail/alphabet/j">J</a>
-        <a class="letter-box" href="/cocktail/alphabet/k">K</a>
-        <a class="letter-box" href="/cocktail/alphabet/l">L</a>
-        <a class="letter-box" href="/cocktail/alphabet/m">M</a>
-        <a class="letter-box" href="/cocktail/alphabet/n">N</a>
-        <a class="letter-box" href="/cocktail/alphabet/o">O</a>
-        <a class="letter-box" href="/cocktail/alphabet/p">P</a>
-        <a class="letter-box" href="/cocktail/alphabet/q">Q</a>
-        <a class="letter-box" href="/cocktail/alphabet/r">R</a>
-        <a class="letter-box" href="/cocktail/alphabet/s">S</a>
-        <a class="letter-box" href="/cocktail/alphabet/t">T</a>
-        <a class="letter-box" href="/cocktail/alphabet/v">V</a>
-        <a class="letter-box" href="/cocktail/alphabet/w">W</a>
-        <a class="letter-box" href="/cocktail/alphabet/y">Y</a>
-        <a class="letter-box" href="/cocktail/alphabet/z">Z</a>
+        {{#each letterArray}}
+        <a class="letter-box" href="/cocktail/alphabet/{{this}}">{{this}}</a>
+        {{/each}}
+        
+        
 </div>
 
 

@@ -99,7 +99,7 @@ router.get("/", (req, res) => res.render("cocktails/filters"));
 
 // filter alphabetically
 
-router.get("/alphabet", (req, res) => res.render("cocktails/alphabet-order"));
+router.get("/alphabet", (req, res) => res.render("cocktails/alphabet-order", {letterArray: "ABCDEFGHIJKLMNOPQRSTVWYZ".split('')}));
 
 // alphabetic filter for each letter
 router.get("/alphabet/:letter", (req, res) => {
