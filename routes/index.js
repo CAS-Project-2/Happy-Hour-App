@@ -30,9 +30,9 @@ router.route("/").get((req, res) => {
       "May you always have love in your heart and beer in your belly.",
 
    ]
-            const random = Math.floor(Math.random()* quotes.length)
-            console.log("quote:", random)
-            const q = quotes[random]
+    const random = Math.floor(Math.random()* quotes.length)
+    
+    const q = quotes[random]
   
   if (req.session.loggedInUser) {
     const { _id } = req.session.loggedInUser;

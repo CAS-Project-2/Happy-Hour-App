@@ -205,9 +205,15 @@ router.get("/community/:id", (req, res) => {
     });
 });
 router.get("/community", (req, res) => {
-  Cocktail.find().then((cocktails) => {
-    res.render("cocktails/community-cocktails", { cocktails });
-  });
+
+  if (req.session.loggedInUser) {
+    Cocktail.find().then((cocktails) => {
+      res.render("cocktails/community-cocktails", { cocktails });
+    });
+  } else {
+    res.render("login");
+  }
+
 });
 
 //GET RANDOM COCKTAIL
