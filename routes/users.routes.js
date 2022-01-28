@@ -59,13 +59,12 @@ router
 
     const loggedInUser = await User.findOne({ username });
     if (!loggedInUser) {
-      console.log("check")
       res.render("login", {
         error: { type: "USR_ERR", msg: "User does not exist" },
       });
   
     }
-    console.log("check2")
+ 
 
     const pwsIsCorrect = bcrypt.compareSync(password, loggedInUser.password);
 
@@ -187,14 +186,21 @@ router
         console.log(error);
       });
   })
-  .post((req, res) => {
+  .post(multerUploader.single("imgUrl"),(req, res) => {
     const { id } = req.params;
     const { name, alcoholic, glass, ingredients, instructions, owner } =
       req.body;
 
+      let imgUrl;
+      if (req.file) {
+        imgUrl = req.file.path;
+      } else {
+        imgUrl =
+          "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg";
+      }
     Cocktail.findByIdAndUpdate(
       id,
-      { name, alcoholic, glass, ingredients, instructions, owner },
+      { name, alcoholic, glass, ingredients, instructions, owner, imgUrl },
       { new: true }
     )
       .then(() => {
